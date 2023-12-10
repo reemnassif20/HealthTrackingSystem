@@ -1,0 +1,27 @@
+*{
+    /*-fx-background-color: white;*/
+}
+#WelcomeText {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+#signInButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+#passwordField, #usernameField {
+    -fx-border-color: #A9A9A9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+#usernameLabel, #passwordLabel, #signUpLabel {
+    -fx-font-weight: bold;
+}
+
+#signUpButton {
+    -fx-border-width: 0;
+    -fx-text-fill: #2196F3;
+}
