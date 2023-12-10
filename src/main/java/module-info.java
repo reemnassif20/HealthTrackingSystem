@@ -6,4 +6,6 @@ module com.example.healthtrackingsystem {
 
     opens com.example.healthtrackingsystem to javafx.fxml;
     exports com.example.healthtrackingsystem;
+    exports controllers;
+    opens controllers to javafx.fxml;
 }
