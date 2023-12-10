@@ -5,7 +5,6 @@ module com.example.healthtrackingsystem {
     requires org.kordamp.bootstrapfx.core;
 
     opens com.example.healthtrackingsystem to javafx.fxml;
+    opens Controllers to javafx.fxml;
     exports com.example.healthtrackingsystem;
-    exports controllers;
-    opens controllers to javafx.fxml;
 }

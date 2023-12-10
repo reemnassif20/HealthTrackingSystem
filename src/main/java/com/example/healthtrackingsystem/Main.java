@@ -9,9 +9,9 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/GUI files/SignUP.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/GUI files/SignIn.fxml"));
+        Scene SignInScene = new Scene(fxmlLoader.load());
+        stage.setScene(SignInScene);
         stage.show();
         stage.setTitle("Health Tracking System");
         Image icon =new Image(getClass().getResourceAsStream("/Images/logo.jpeg"));
