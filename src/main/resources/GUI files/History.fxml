@@ -8,6 +8,10 @@
 <?import javafx.scene.control.Button?>
 <AnchorPane fx:controller="Controllers.SceneController" stylesheets="@/CSS files/History.css" prefHeight="720.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
+        <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="History" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
+        <Text  layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="479.9999993443489"
+               text="You make all of this! Be proud of your self !!"></Text>
+
         <ButtonBar layoutX="-19.0" layoutY="666.0" prefHeight="49.0" prefWidth="495.0">
             <buttons>
                 <Button onAction="#SwitchToExercising" mnemonicParsing="false" prefHeight="71.0" prefWidth="120.0" text="EXERCISING" />

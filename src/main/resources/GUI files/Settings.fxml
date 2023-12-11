@@ -20,6 +20,8 @@
         <Button onAction="#SwitchToSettings" layoutX="357.0" layoutY="3.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" text="Settings" />
 
 
-        <Text layoutX="196.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="98.51513671875" />
+        <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
+        <Text  layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="479.9999993443489"
+               text="Fitness is not a destination; it's a way of life. Make every choice a step toward a healthier you." />
     </children>
 </AnchorPane>
