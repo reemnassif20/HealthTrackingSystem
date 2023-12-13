@@ -23,7 +23,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-
         Connection con = DBConnection.getConnection();
         if (con== null){
             System.out.println("Connection failed ");
@@ -31,8 +30,6 @@ public class Main extends Application {
         else {
             System.out.println("Connection Success! ");
         }
-
-
 
         launch();
     }
