@@ -2,26 +2,28 @@ DROP DATABASE IF EXISTS health_tracking;
 CREATE DATABASE health_tracking;
 USE health_tracking;
 CREATE TABLE User (
-                      user_id INT PRIMARY KEY,
-                      username VARCHAR(255) UNIQUE,
+                      user_id INT AUTO_INCREMENT PRIMARY KEY,
+                      username VARCHAR(255) ,
                       password VARCHAR(255),
                       full_name VARCHAR(255),
-                      email VARCHAR(255),
+                      email VARCHAR(255) UNIQUE,
                       gender VARCHAR(10),
                       current_weight DECIMAL(5,2),
                       age INT,
-                      height INT
+                      height INT,
+                      registration_date DATE
+
 );
 
 CREATE TABLE Food (
-                      food_id INT PRIMARY KEY,
+                      food_id INT AUTO_INCREMENT PRIMARY KEY,
                       food_name VARCHAR(255),
                       food_type VARCHAR(255),
                       calories_per_hundred_units INT
 );
 
 CREATE TABLE Reminder (
-                          reminder_id INT,
+                          reminder_id  INT AUTO_INCREMENT,
                           user_id INT,
                           reminder_message VARCHAR(255),
                           reminder_period INT,
@@ -30,14 +32,14 @@ CREATE TABLE Reminder (
 );
 
 CREATE TABLE Exercise (
-                          exercise_id INT PRIMARY KEY,
+                          exercise_id INT  AUTO_INCREMENT PRIMARY KEY,
                           exercise_type VARCHAR(255),
                           exercise_name VARCHAR(255),
                           activity_type_calories INT
 );
 
 CREATE TABLE History (
-                         history_id INT,
+                         history_id INT AUTO_INCREMENT,
                          history_date DATE,
                          history_weight DECIMAL(5,2),
                          user_id INT,

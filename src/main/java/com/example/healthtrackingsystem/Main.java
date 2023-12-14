@@ -30,7 +30,6 @@ public class Main extends Application {
         else {
             System.out.println("Connection Success! ");
         }
-
         launch();
     }
 
