@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/History.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SceneController">
+<AnchorPane prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/History.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.healthtrackingsystem.Controllers.SceneController">
     <children>
         <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="History" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
         <Text layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You make all of this! Be proud of your self !!" textAlignment="CENTER" wrappingWidth="479.9999993443489" />

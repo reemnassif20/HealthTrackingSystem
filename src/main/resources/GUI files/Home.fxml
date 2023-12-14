@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/Home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/Home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.healthtrackingsystem.Controllers.SceneController">
    <children>
       <Text  styleClass="scene-title" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
       <Text  styleClass="body-text"   layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Healthy living is a recipe for a joyful life – blend good choices, positive habits, and a sprinkle of self-love." textAlignment="CENTER" wrappingWidth="479.9999993443489" />

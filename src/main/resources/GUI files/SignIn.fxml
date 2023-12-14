@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/SignIn.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/SignIn.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.healthtrackingsystem.Controllers.SceneController">
    <children>
       <Label fx:id="WelcomeText" alignment="CENTER" graphicTextGap="8.0" layoutY="88.0" prefHeight="114.0" prefWidth="480.0" text="Welcome to Health Tracker" />
       <Button fx:id="signInButton" layoutX="216.0" layoutY="450.0" mnemonicParsing="false" onAction="#SwitchToHome" text="Sign In" />
