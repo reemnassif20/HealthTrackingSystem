@@ -6,6 +6,7 @@ public interface UserDao {
     List<User> findAll();
 
     User findById(int userId);
+    User getUserByEmail(String email);
 
     void save(User user);
 

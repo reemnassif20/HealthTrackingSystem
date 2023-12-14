@@ -12,13 +12,7 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
-    public void SwitchToSignUp(ActionEvent event) throws IOException {
-        root=FXMLLoader.load(getClass().getResource("/GUI files/SignUP.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
     public void SwitchToHome(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("/GUI files/Home.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();

@@ -168,4 +168,44 @@ public class UserDaoImpl implements UserDao {
             }
         }
     }
+    @Override
+    public User getUserByEmail(String email) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return null;
+        }
+
+        String query = "SELECT * FROM User WHERE email=?;";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return User.builder()
+                        .userId(resultSet.getInt("user_id"))
+                        .username(resultSet.getString("username"))
+                        .password(resultSet.getString("password"))
+                        .fullName(resultSet.getString("full_name"))
+                        .email(resultSet.getString("email"))
+                        .gender(resultSet.getString("gender"))
+                        .currentWeight(resultSet.getBigDecimal("current_weight"))
+                        .age(resultSet.getInt("age"))
+                        .height(resultSet.getInt("height"))
+                        .registrationDate(resultSet.getDate("registration_date"))
+                        .build();
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
 }
