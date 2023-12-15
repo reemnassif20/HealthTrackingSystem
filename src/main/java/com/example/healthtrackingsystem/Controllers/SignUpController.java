@@ -129,8 +129,7 @@ public class SignUpController {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();  // Print the stack trace for debugging
-            // Handle the exception (e.g., show an error message)
+            e.printStackTrace();
         }
     }
 

@@ -41,6 +41,7 @@ public class SignInController {
         User user = userDao.getUserByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
             System.out.println("Sign in successful!");
+            UserRepository.setCurrentUser(user);
             SwitchToHome(event);
         } else {
             signInStatusLabel.setText("Incorrect email or password. Please try again.");
@@ -69,7 +70,8 @@ public class SignInController {
     }
     @FXML
     public void SwitchToHome(ActionEvent event) throws IOException {
-        root=FXMLLoader.load(getClass().getResource("/GUI files/Home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI files/Home.fxml"));
+        root = loader.load();
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
