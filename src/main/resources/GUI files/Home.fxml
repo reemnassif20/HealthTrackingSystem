@@ -1,63 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Label?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/Home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.healthtrackingsystem.Controllers.HomeController">
    <children>
-      <Text  styleClass="scene-title" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
-      <Text  styleClass="body-text"   layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Healthy living is a recipe for a joyful life – blend good choices, positive habits, and a sprinkle of self-love." textAlignment="CENTER" wrappingWidth="479.9999993443489" />
+      <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="scene-title" text="HOME" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
+      <Text layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body-text" text="Healthy living is a recipe for a joyful life – blend good choices, positive habits, and a sprinkle of self-love." textAlignment="CENTER" wrappingWidth="479.9999993443489" />
       <Text layoutX="21.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome ," wrappingWidth="73.01513671875" />
-      <Text fx:id="usernameText"  layoutX="87.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User" wrappingWidth="73.01513671875" />
-      <Text layoutX="33.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current MBI" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
-      <Text layoutX="109.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
-      <Text layoutX="261.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Weight" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
-      <Text layoutX="357.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
-      <Text layoutX="100.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Need to " wrappingWidth="107.01513671875" />
-      <Text layoutX="178.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lose/Gain" wrappingWidth="107.01513671875" />
-      <Text layoutX="244.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="21.01513671875" />
-      <Text layoutX="259.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KG of ypur Weight" wrappingWidth="209.01513671875" />
-      <Text layoutX="112.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You used " wrappingWidth="107.01513671875" />
-      <Text layoutX="176.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="21.01513671875" />
-      <Text layoutX="189.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal out of" wrappingWidth="107.01513290405273" />
-      <Text layoutX="252.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="21.01513671875" />
-      <Text layoutX="267.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal Today !" wrappingWidth="107.01513290405273" />
-      <Text layoutX="114.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Acheived " wrappingWidth="91.01513671875" />
-      <Text layoutX="228.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="21.01513671875" />
-      <Text layoutX="262.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Of your Goal !" wrappingWidth="107.01513290405273" />
-      <ProgressBar blendMode="SRC_ATOP" layoutX="109.0" layoutY="469.0" prefHeight="20.0" prefWidth="250.0" progress="0.57" AnchorPane.topAnchor="469.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </ProgressBar>
-      <Text layoutX="33.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alarms Set" wrappingWidth="149.01513671875" />
-      <Text layoutX="51.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="13.01513759046793" />
-      <Text layoutX="75.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hr" wrappingWidth="13.01513759046793" />
-      <Text layoutX="103.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="13.01513759046793" />
-      <Text layoutX="125.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="min" wrappingWidth="39.01513759046793" />
-      <Text layoutX="159.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remaining on" wrappingWidth="119.0151356458664" />
-      <Text layoutX="253.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XX" wrappingWidth="119.0151356458664" />
+      <Text fx:id="usernameText" layoutX="87.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User" wrappingWidth="73.01513671875" />
+      <Text layoutX="23.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current BMI" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
+      <Text fx:id="CurrentBMI" layoutX="88.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
+      <Text layoutX="163.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Weight" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
+      <Text fx:id="CurrentWeight" layoutX="238.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
+      <Text layoutX="90.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I it is better to " wrappingWidth="107.01513671875" />
+      <Text fx:id="ChangeRecommendation" layoutX="178.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="107.01513671875" />
+      <Text fx:id="WeightChange" layoutX="218.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513671875" />
+      <Text layoutX="259.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KG of your Weight" wrappingWidth="209.01513671875" />
+      <Text layoutX="109.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You used " wrappingWidth="107.01513671875" />
+      <Text layoutX="168.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513649523258" />
+      <Text layoutX="198.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal out of" wrappingWidth="107.01513290405273" />
+      <Text fx:id="CaloriesPerDay" layoutX="262.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513835787773" />
+      <Text layoutX="302.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal Today !" wrappingWidth="107.01513290405273" />
+      <Text layoutX="103.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Current Weight Status is " wrappingWidth="199.99999552965164" />
+      <Text fx:id="WeightStatus" layoutX="284.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="142.01513850688934" />
       <ButtonBar layoutX="-19.0" layoutY="666.0" prefHeight="49.0" prefWidth="495.0">
          <buttons>
-            <Button styleClass="sceneButton" mnemonicParsing="false" onAction="#SwitchToExercising" prefHeight="71.0" prefWidth="120.0" text="EXERCISING" />
-            <Button styleClass="sceneButton" mnemonicParsing="false" onAction="#SwitchToMeals" prefHeight="71.0" prefWidth="120.0" text="MEALS" />
-            <Button styleClass="sceneButton" mnemonicParsing="false" onAction="#SwitchToAlarms" prefHeight="71.0" prefWidth="120.0" text="ALARMS" />
-            <Button styleClass="sceneButton" mnemonicParsing="false" onAction="#SwitchToHome" prefHeight="49.0" prefWidth="120.0" text="HOME" />
+            <Button mnemonicParsing="false" onAction="#SwitchToExercising" prefHeight="71.0" prefWidth="120.0" styleClass="sceneButton" text="EXERCISING" />
+            <Button mnemonicParsing="false" onAction="#SwitchToMeals" prefHeight="71.0" prefWidth="120.0" styleClass="sceneButton" text="MEALS" />
+            <Button mnemonicParsing="false" onAction="#SwitchToAlarms" prefHeight="71.0" prefWidth="120.0" styleClass="sceneButton" text="ALARMS" />
+            <Button mnemonicParsing="false" onAction="#SwitchToHome" prefHeight="49.0" prefWidth="120.0" styleClass="sceneButton" text="HOME" />
          </buttons>
       </ButtonBar>
 
-      <Button styleClass="sceneButton" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToHistory" prefHeight="41.0" prefWidth="120.0" text="History" />
+      <Button layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToHistory" prefHeight="41.0" prefWidth="120.0" styleClass="sceneButton" text="History" />
 
-      <Button styleClass="sceneButton" layoutX="357.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToSettings" prefHeight="41.0" prefWidth="120.0" text="Settings" />
-      <Separator layoutX="139.0" layoutY="280.0" prefWidth="200.0" />
-      <Separator layoutX="141.0" layoutY="340.0" prefWidth="200.0" />
-      <Separator layoutX="141.0" layoutY="409.0" prefWidth="200.0" />
-      <Separator layoutX="141.0" layoutY="517.0" prefWidth="200.0" />
+      <Button layoutX="357.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToSettings" prefHeight="41.0" prefWidth="120.0" styleClass="sceneButton" text="Settings" />
+      <Separator layoutX="138.0" layoutY="311.0" prefWidth="200.0" />
+      <Separator layoutX="141.0" layoutY="400.0" prefWidth="200.0" />
+      <Separator layoutX="141.0" layoutY="486.0" prefWidth="200.0" />
+      <Separator layoutX="141.0" layoutY="577.0" prefWidth="200.0" />
+      <Text layoutX="308.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optimal  Weight" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
+      <Text fx:id="OptimalWeight" layoutX="395.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
    </children>
 </AnchorPane>

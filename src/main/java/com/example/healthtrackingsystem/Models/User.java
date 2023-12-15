@@ -1,6 +1,7 @@
 package com.example.healthtrackingsystem.Models;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 public class User {
@@ -117,6 +118,113 @@ public class User {
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
+    public double calculateBMI() {
+        // BMI calculation: BMI = weight (kg) / (height (m))^2
+        double heightInMeters = height / 100.0; // Convert height to meters
+        return Math.round((currentWeight.doubleValue() / (heightInMeters * heightInMeters)) * 100.0) / 100.0;
+    }
+
+
+    public BigDecimal calculateOptimalWeight() {
+        // Optimal weight calculation (e.g., BMI of 22)
+        double optimalBMI = 22.0;
+        double optimalWeight = optimalBMI * (height / 100.0) * (height / 100.0);
+
+        BigDecimal optimalWeightBigDecimal = BigDecimal.valueOf(optimalWeight);
+        return optimalWeightBigDecimal.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public String determineWeightStatus() {
+        double bmi = calculateBMI();
+
+        if (bmi < 18.5) {
+            return "Underweight";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            return "Normal weight";
+        } else if (bmi >= 25 && bmi < 30) {
+            return "Overweight";
+        } else {
+            return "Obese";
+        }
+    }
+
+    public BigDecimal calculateWeightToLoseOrGain() {
+        BigDecimal optimalWeight = calculateOptimalWeight();
+        BigDecimal weightDifference = optimalWeight.subtract(currentWeight).abs();
+        return weightDifference.setScale(2, RoundingMode.HALF_UP);
+    }
+    public String determineWeightChangeRecommendation() {
+        double bmi = calculateBMI();
+
+        // Define BMI ranges for recommendations
+        double normalWeightLowerThreshold = 18.5;
+
+
+        if (bmi < normalWeightLowerThreshold) {
+            return "gain";
+        } else {
+            return "lose";
+        }
+    }
+
+
+    public int calculateCaloriesPerDay() {
+        // Example: Calculate calories needed for weight management
+        // You may need a more sophisticated formula based on individual factors
+
+        // Base calories needed for weight maintenance
+        int baseCalories = 2000;
+
+        // Adjust calories based on weight change goal (lose, maintain, gain)
+        double weightChangeMultiplier = getWeightChangeMultiplier();
+        int adjustedCalories = (int) (baseCalories * weightChangeMultiplier);
+
+        // Adjust calories based on other factors (gender, activity level, etc.)
+        double genderMultiplier = getGenderMultiplier();
+        //todo change this later with proper implementation in the database with:
+//        private double getActivityLevelMultiplier() {
+//            switch (activityLevel) {
+//                case "sedentary":
+//                    return 1.2;
+//                case "moderate":
+//                    return 1.5;
+//                case "active":
+//                    return 1.8;
+//                default:
+//                    return 1.0; // Assume no adjustment for unknown activity level
+//            }
+        double activityLevelMultiplier = 1;
+
+        // Combine all multipliers to get the final adjusted calories
+        int finalCalories = (int) (adjustedCalories * genderMultiplier * activityLevelMultiplier);
+
+        return finalCalories;
+    }
+
+    private double getWeightChangeMultiplier() {
+        String weightChangeRecommendation = determineWeightChangeRecommendation();
+
+        // Adjust based on weight change goal
+        switch (weightChangeRecommendation) {
+            case "gain":
+                return 1.2; // Increase calories for weight gain
+            case "lose":
+                return 0.8; // Decrease calories for weight loss
+            default:
+                return 1.0; // Maintain calories for weight maintenance
+        }
+    }
+
+    private double getGenderMultiplier() {
+        // Adjust based on gender
+        if ("Male".equalsIgnoreCase(gender)) {
+            return 1.1; // Adjust for male gender
+        } else {
+            return 1.0; //adjustment for female genders
+        }
+    }
+
+
 
     @Override
     public String toString() {
