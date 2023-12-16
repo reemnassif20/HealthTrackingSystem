@@ -1,16 +1,21 @@
 package com.example.healthtrackingsystem.Controllers;
 
+import com.example.healthtrackingsystem.Interfaces.FoodDao;
+import com.example.healthtrackingsystem.Models.Food;
+import com.example.healthtrackingsystem.Models.User;
+import com.example.healthtrackingsystem.dao.FoodDaoImpl;
+import com.example.healthtrackingsystem.dao.UserDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MealsController extends SceneController{
 
     @FXML
     private DatePicker datePicker;
-
     @FXML
     private TextField breakFastFood;
     @FXML
@@ -50,26 +55,6 @@ public class MealsController extends SceneController{
     @FXML
     private ComboBox<String> dinnerDrinkComboBox;
 
-    @FXML
-    private Button breakFastFoodButton;
-
-    @FXML
-    private Button breakFastDessertButton;
-    @FXML
-    private Button breakFastDrinkButton;
-    @FXML
-    private Button lunchFoodButton;
-    @FXML
-    private Button lunchDessertButton;
-    @FXML
-    private Button lunchDrinkButton;
-    @FXML
-    private Button dinnerFoodButton;
-    @FXML
-    private Button dinnerDessertButton;
-    @FXML
-    private Button dinnerDrinkButton;
-
     private String breakFastFoodValue;
     private String breakFastDessertValue;
     private String breakFastDrinkValue;
@@ -82,70 +67,22 @@ public class MealsController extends SceneController{
 
 
 
+
     @FXML
     public void initialize() {
         datePicker.setValue(LocalDate.now());
-
         datePicker.setOnAction(this::handleDatePickerAction);
 
-        initializeBreakFastFoodComboBox();
-        initializeBreakFastDessertComboBox();
-        initializeBreakFastDrinkComboBox();
-        initializeLunchFoodComboBox();
-        initializeLunchDessertComboBox();
-        initializeLunchDrinkComboBox();
-        initializeDinnerFoodComboBox();
-        initializeDinnerDessertComboBox();
-        initializeDinnerDrinkComboBox();
+
+
+        updateDessertsComboBox();
+        updateFoodComboBox();
+        updateDrinksComboBox();
+
     }
     private void handleDatePickerAction(ActionEvent event) {
         LocalDate selectedDate = datePicker.getValue();
         System.out.println("Selected date: " + selectedDate);
-    }
-
-    private void initializeBreakFastFoodComboBox() {
-        breakFastFoodComboBox.getItems().addAll("x1", "x2", "x3");
-        breakFastFoodComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeBreakFastDessertComboBox() {
-        breakFastDessertComboBox.getItems().addAll("y1", "y2", "y3");
-        breakFastDessertComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeBreakFastDrinkComboBox() {
-        breakFastDrinkComboBox.getItems().addAll("z1", "z2", "z3");
-        breakFastDrinkComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeLunchFoodComboBox() {
-        lunchFoodComboBox.getItems().addAll("x4", "x5", "x6");
-        lunchFoodComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeLunchDessertComboBox() {
-        lunchDessertComboBox.getItems().addAll("y4", "y5", "y6");
-        lunchDessertComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeLunchDrinkComboBox() {
-        lunchDrinkComboBox.getItems().addAll("z4", "z5", "z6");
-        lunchDrinkComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeDinnerFoodComboBox() {
-        dinnerFoodComboBox.getItems().addAll("x7", "x8", "x9");
-        dinnerFoodComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeDinnerDessertComboBox() {
-        dinnerDessertComboBox.getItems().addAll("y7", "y8", "y9");
-        dinnerDessertComboBox.getSelectionModel().selectFirst();
-    }
-
-    private void initializeDinnerDrinkComboBox() {
-        dinnerDrinkComboBox.getItems().addAll("z7", "z8", "z9");
-        dinnerDrinkComboBox.getSelectionModel().selectFirst();
     }
 
 
@@ -217,6 +154,54 @@ public class MealsController extends SceneController{
         System.out.println("Selected Value for Dinner Drink: " + dinnerDrinkValue+dinnerDrinkQuantity);
     }
 
+
+
+    private void updateComboBox(ComboBox<String> comboBox, List<Food> foodList) {
+        comboBox.getItems().clear();
+        for (Food food : foodList) {
+            comboBox.getItems().add(food.getFoodName());
+        }
+        comboBox.getSelectionModel().selectFirst();
+    }
+
+    private void updateDessertsComboBox() {
+        List<Food> dessertList = getDesserts();
+        updateComboBox(breakFastDessertComboBox, dessertList);
+        updateComboBox(lunchDessertComboBox, dessertList);
+        updateComboBox(dinnerDessertComboBox, dessertList);
+    }
+
+
+
+    public List<Food> getDesserts() {
+        FoodDao foodDao = new FoodDaoImpl();
+        return foodDao.findByFoodType("Dessert");
+    }
+
+    private void updateFoodComboBox() {
+        List<Food> foodList = getFood();
+        updateComboBox(breakFastFoodComboBox, foodList);
+        updateComboBox(lunchFoodComboBox, foodList);
+        updateComboBox(dinnerFoodComboBox, foodList);
+    }
+
+
+    public List<Food> getFood() {
+        FoodDao foodDao = new FoodDaoImpl();
+        return foodDao.findByFoodType("Food");
+    }
+    private void updateDrinksComboBox() {
+        List<Food> drinkList = getDrinks();
+        updateComboBox(breakFastDrinkComboBox, drinkList);
+        updateComboBox(lunchDrinkComboBox, drinkList);
+        updateComboBox(dinnerDrinkComboBox, drinkList);
+    }
+
+
+    public List<Food> getDrinks() {
+        FoodDao foodDao = new FoodDaoImpl();
+        return foodDao.findByFoodType("Drink");
+    }
 
 
 

@@ -26,70 +26,70 @@
         <Text layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eating healthy is not a choice, it's a commitment to nourish your body, mind, and soul with the goodness that fuels a vibrant life." textAlignment="CENTER" wrappingWidth="479.9999993443489" />
 
 
-        <DatePicker  fx:id="datePicker" layoutX="231.0" layoutY="165.0" prefHeight="31.0" prefWidth="218.0" />
+        <DatePicker fx:id="datePicker" layoutX="231.0" layoutY="165.0" prefHeight="31.0" prefWidth="218.0" />
       <Label layoutX="44.0" layoutY="170.0" prefHeight="21.0" prefWidth="143.0" text="Meals date" />
       <Label layoutX="105.0" layoutY="244.0" prefHeight="21.0" prefWidth="48.0" text="I ate " />
-      <TextField  fx:id="breakFastFood" layoutX="159.0" layoutY="240.0" prefHeight="31.0" prefWidth="48.0" text="bf" />
+      <TextField fx:id="breakFastFood" layoutX="159.0" layoutY="240.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="218.0" layoutY="244.0" prefHeight="21.0" prefWidth="58.0" text="gm of " />
-      <Button fx:id="breakFastFoodButton" layoutX="388.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleBreakFastFoodSelection" prefHeight="31.0" prefWidth="71.0" text="bf" />
+      <Button fx:id="breakFastFoodButton" layoutX="388.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleBreakFastFoodSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
         <Separator layoutX="140.0" layoutY="209.0" prefWidth="200.0" />
       <Text layoutX="6.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Breakfast" textAlignment="CENTER" wrappingWidth="449.99999499320984" />
       <Label layoutX="29.0" layoutY="244.0" prefHeight="21.0" prefWidth="48.0" text="Food :" />
       <Label layoutX="106.0" layoutY="280.0" prefHeight="21.0" prefWidth="48.0" text="I ate " />
-      <TextField fx:id="breakFastDessert"  layoutX="160.0" layoutY="276.0" prefHeight="31.0" prefWidth="48.0" text="bd" />
+      <TextField fx:id="breakFastDessert" layoutX="160.0" layoutY="276.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="219.0" layoutY="280.0" prefHeight="21.0" prefWidth="58.0" text="gm of " />
-      <Button fx:id="breakFastDessertButton"  onAction="#handleBreakFastDessertSelection" layoutX="389.0" layoutY="275.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="bd" />
+      <Button fx:id="breakFastDessertButton" layoutX="389.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleBreakFastDessertSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
         <Label layoutX="29.0" layoutY="280.0" prefHeight="21.0" prefWidth="71.0" text="Desserts:" />
-      <Label  layoutX="105.0" layoutY="316.0" prefHeight="21.0" prefWidth="58.0" text="I drank" />
-      <TextField fx:id="breakFastDrink" layoutX="160.0" layoutY="312.0" prefHeight="31.0" prefWidth="48.0" text="br" />
+      <Label layoutX="105.0" layoutY="316.0" prefHeight="21.0" prefWidth="58.0" text="I drank" />
+      <TextField fx:id="breakFastDrink" layoutX="160.0" layoutY="312.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="219.0" layoutY="316.0" prefHeight="21.0" prefWidth="58.0" text="ml of " />
-      <Button fx:id="breakFastDrinkButton"  onAction="#handleBreakFastDrinkSelection" layoutX="389.0" layoutY="311.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="bd" />
+      <Button fx:id="breakFastDrinkButton" layoutX="389.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleBreakFastDrinkSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
         <Label layoutX="30.0" layoutY="316.0" prefHeight="21.0" prefWidth="48.0" text="Drinks:" />
       <Label layoutX="105.0" layoutY="383.0" prefHeight="21.0" prefWidth="48.0" text="I ate " />
-      <TextField  fx:id="lunchFood" layoutX="159.0" layoutY="379.0" prefHeight="31.0" prefWidth="48.0" text="lf" />
+      <TextField fx:id="lunchFood" layoutX="159.0" layoutY="379.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="218.0" layoutY="383.0" prefHeight="21.0" prefWidth="58.0" text="gm of " />
-      <Button  fx:id="lunchFoodButton" onAction="#handleLunchFoodSelection" layoutX="388.0" layoutY="378.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="lf" />
+      <Button fx:id="lunchFoodButton" layoutX="388.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleLunchFoodSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Separator layoutX="140.0" layoutY="348.0" prefWidth="200.0" />
       <Text layoutX="6.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" textAlignment="CENTER" wrappingWidth="449.99999499320984" />
       <Label layoutX="29.0" layoutY="383.0" prefHeight="21.0" prefWidth="48.0" text="Food :" />
       <Label layoutX="106.0" layoutY="419.0" prefHeight="21.0" prefWidth="48.0" text="I ate " />
-      <TextField fx:id="lunchDessert" layoutX="160.0" layoutY="415.0" prefHeight="31.0" prefWidth="48.0" text="ld" />
+      <TextField fx:id="lunchDessert" layoutX="160.0" layoutY="415.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="219.0" layoutY="419.0" prefHeight="21.0" prefWidth="58.0" text="gm of " />
-      <Button fx:id="lunchDessertButton"  onAction="#handleLunchDessertSelection" layoutX="389.0" layoutY="414.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="ld" />
+      <Button fx:id="lunchDessertButton" layoutX="389.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleLunchDessertSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Label layoutX="29.0" layoutY="419.0" prefHeight="21.0" prefWidth="71.0" text="Desserts:" />
-      <TextField fx:id="lunchDrink" layoutX="160.0" layoutY="451.0" prefHeight="31.0" prefWidth="48.0" text="lr" />
+      <TextField fx:id="lunchDrink" layoutX="160.0" layoutY="451.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="219.0" layoutY="455.0" prefHeight="21.0" prefWidth="58.0" text="ml of " />
-      <Button fx:id="lunchDrinkButton"  onAction="#handleLunchDrinkSelection" layoutX="389.0" layoutY="450.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="lr" />
+      <Button fx:id="lunchDrinkButton" layoutX="389.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleLunchDrinkSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Label layoutX="30.0" layoutY="455.0" prefHeight="21.0" prefWidth="48.0" text="Drinks:" />
       <Label layoutX="106.0" layoutY="521.0" prefHeight="21.0" prefWidth="48.0" text="I ate " />
-      <TextField fx:id="dinnerFood" layoutX="160.0" layoutY="517.0" prefHeight="31.0" prefWidth="48.0" text="df" />
+      <TextField fx:id="dinnerFood" layoutX="160.0" layoutY="517.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="219.0" layoutY="521.0" prefHeight="21.0" prefWidth="58.0" text="gm of " />
-      <Button fx:id="dinnerFoodButton" onAction="#handleDinnerFoodSelection" layoutX="389.0" layoutY="516.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="df" />
+      <Button fx:id="dinnerFoodButton" layoutX="389.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleDinnerFoodSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Separator layoutX="141.0" layoutY="486.0" prefWidth="200.0" />
       <Text layoutX="7.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinner" textAlignment="CENTER" wrappingWidth="449.99999499320984" />
       <Label layoutX="30.0" layoutY="521.0" prefHeight="21.0" prefWidth="48.0" text="Food :" />
       <Label layoutX="107.0" layoutY="557.0" prefHeight="21.0" prefWidth="48.0" text="I ate " />
-      <TextField fx:id="dinnerDessert" layoutX="161.0" layoutY="553.0" prefHeight="31.0" prefWidth="48.0" text="dd" />
+      <TextField fx:id="dinnerDessert" layoutX="161.0" layoutY="553.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="220.0" layoutY="557.0" prefHeight="21.0" prefWidth="58.0" text="gm of " />
-      <Button fx:id="dinnerDessertButton"  onAction="#handleDinnerDessertSelection" layoutX="390.0" layoutY="552.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="dd" />
+      <Button fx:id="dinnerDessertButton" layoutX="390.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleDinnerDessertSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Label layoutX="30.0" layoutY="557.0" prefHeight="21.0" prefWidth="71.0" text="Desserts:" />
       <Label layoutX="107.0" layoutY="593.0" prefHeight="21.0" prefWidth="48.0" text="I drank" />
-      <TextField fx:id="dinnerDrink" layoutX="161.0" layoutY="589.0" prefHeight="31.0" prefWidth="48.0" text="dr" />
+      <TextField fx:id="dinnerDrink" layoutX="161.0" layoutY="589.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="220.0" layoutY="593.0" prefHeight="21.0" prefWidth="58.0" text="ml of " />
-      <Button fx:id="dinnerDrinkButton" onAction="#handleDinnerDrinkSelection" layoutX="390.0" layoutY="588.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="dr" />
+      <Button fx:id="dinnerDrinkButton" layoutX="390.0" layoutY="588.0" mnemonicParsing="false" onAction="#handleDinnerDrinkSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Label layoutX="31.0" layoutY="593.0" prefHeight="21.0" prefWidth="48.0" text="Drinks:" />
       <Label layoutX="155.0" layoutY="637.0" prefHeight="21.0" prefWidth="197.0" text="Total Calories Taken is" />
       <Label layoutX="310.0" layoutY="638.0" prefHeight="21.0" prefWidth="58.0" text="X" />
       <Label layoutX="108.0" layoutY="456.0" prefHeight="21.0" prefWidth="58.0" text="I drank" />
-        <ComboBox fx:id="breakFastFoodComboBox" layoutX="276.0" layoutY="238.0" prefHeight="31.0" prefWidth="99.0" promptText="bf" />
-        <ComboBox fx:id="breakFastDessertComboBox" layoutX="276.0" layoutY="274.0" prefHeight="31.0" prefWidth="99.0" promptText="bd" />
-        <ComboBox fx:id="breakFastDrinkComboBox" layoutX="276.0" layoutY="311.0" prefHeight="31.0" prefWidth="99.0" promptText="br" />
-        <ComboBox fx:id="lunchFoodComboBox" layoutX="276.0" layoutY="414.0" prefHeight="31.0" prefWidth="99.0" promptText="lf" />
-        <ComboBox fx:id="lunchDessertComboBox" layoutX="276.0" layoutY="377.0" prefHeight="31.0" prefWidth="99.0" promptText="ld" />
-        <ComboBox fx:id="lunchDrinkComboBox" layoutX="276.0" layoutY="450.0" prefHeight="31.0" prefWidth="99.0" promptText="lr" />
-        <ComboBox fx:id="dinnerFoodComboBox" layoutX="276.0" layoutY="516.0" prefHeight="31.0" prefWidth="99.0" promptText="df" />
-        <ComboBox fx:id="dinnerDessertComboBox" layoutX="276.0" layoutY="552.0" prefHeight="31.0" prefWidth="99.0" promptText="dd" />
-        <ComboBox fx:id="dinnerDrinkComboBox" layoutX="276.0" layoutY="588.0" prefHeight="31.0" prefWidth="99.0" promptText="dr" />
+        <ComboBox fx:id="breakFastFoodComboBox" layoutX="276.0" layoutY="238.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="breakFastDessertComboBox" layoutX="276.0" layoutY="274.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="breakFastDrinkComboBox" layoutX="276.0" layoutY="311.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="lunchDessertComboBox" layoutX="276.0" layoutY="414.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="lunchFoodComboBox" layoutX="276.0" layoutY="377.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="lunchDrinkComboBox" layoutX="276.0" layoutY="450.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="dinnerFoodComboBox" layoutX="276.0" layoutY="516.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="dinnerDessertComboBox" layoutX="276.0" layoutY="552.0" prefHeight="31.0" prefWidth="99.0" />
+        <ComboBox fx:id="dinnerDrinkComboBox" layoutX="276.0" layoutY="588.0" prefHeight="31.0" prefWidth="99.0" />
 
     </children>
 </AnchorPane>
