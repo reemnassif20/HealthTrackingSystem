@@ -7,6 +7,8 @@ public interface UserDao {
 
     User findById(int userId);
     User getUserByEmail(String email);
+    void updateUsername(int userId, String newUsername);
+    void updatePassword(int userId, String newPassword);
 
     void save(User user);
 

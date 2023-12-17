@@ -208,4 +208,51 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    @Override
+    public void updateUsername(int userId, String newUsername) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return;
+        }
+
+        String query = "UPDATE User SET username=? WHERE user_id=?;";
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, newUsername);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void updatePassword(int userId, String newPassword) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return;
+        }
+
+        String query = "UPDATE User SET password=? WHERE user_id=?;";
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
 }

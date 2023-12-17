@@ -136,6 +136,7 @@ public class MealsController extends SceneController{
         double addedCalories = calories * (quantity / 100.0);
         totalCalories += addedCalories;
         totalCaloriesLabel.setText(String.valueOf(totalCalories));
+        foodTextField.clear();
         showSuccessMessage();
     }
 
