@@ -65,16 +65,10 @@ public class MealsController extends SceneController{
     private ComboBox<String> dinnerDessertComboBox;
     @FXML
     private ComboBox<String> dinnerDrinkComboBox;
+    @FXML
+    private Label totalCaloriesLabel;
+    private double totalCalories;
 
-    private String breakFastFoodValue;
-    private String breakFastDessertValue;
-    private String breakFastDrinkValue;
-    private String lunchFoodValue;
-    private String lunchDessertValue;
-    private String lunchDrinkValue;
-    private String dinnerFoodValue;
-    private String dinnerDessertValue;
-    private String dinnerDrinkValue;
 
 
     @FXML
@@ -92,6 +86,7 @@ public class MealsController extends SceneController{
                 new KeyFrame(Duration.seconds(0.5), this::hideSuccessMessage)
         );
         successMessageTimeline.setCycleCount(1);
+        totalCalories = 0;
 
     }
 
@@ -137,6 +132,10 @@ public class MealsController extends SceneController{
 
         UserFoodDaoImpl userFoodDao = new UserFoodDaoImpl();
         userFoodDao.save(userFood);
+        double calories = selectedFood.getCaloriesPerHundredUnits();
+        double addedCalories = calories * (quantity / 100.0);
+        totalCalories += addedCalories;
+        totalCaloriesLabel.setText(String.valueOf(totalCalories));
         showSuccessMessage();
     }
 
