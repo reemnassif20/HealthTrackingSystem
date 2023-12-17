@@ -151,6 +151,9 @@ public class SettingsController extends SceneController {
             historyDao.save(history);
             showSuccessMessage();
             newWeightField.clear();
+            BigDecimal latestWeight= historyDao.findLatestHistoryByUserId(UserRepository.getCurrentUser().getUserId()).getHistoryWeight();
+            System.out.println("latest weight is "+latestWeight);
+            UserRepository.getCurrentUser().setCurrentWeight(latestWeight);
         } catch (NumberFormatException e) {
             successMessage.setText("Please enter a valid weight value.");
         }

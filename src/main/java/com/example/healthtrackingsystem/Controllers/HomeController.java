@@ -1,9 +1,15 @@
 package com.example.healthtrackingsystem.Controllers;
+import com.example.healthtrackingsystem.Models.History;
 import com.example.healthtrackingsystem.Models.User;
+import com.example.healthtrackingsystem.dao.HistoryDaoImpl;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 
 public class HomeController extends SceneController{
@@ -40,6 +46,12 @@ public class HomeController extends SceneController{
         usernameText.setText(signedInUser.getUsername());
 
 
+        HistoryDaoImpl historyDao = new HistoryDaoImpl();
+        BigDecimal latestWeight= historyDao.findLatestHistoryByUserId(UserRepository.getCurrentUser().getUserId()).getHistoryWeight();
+        UserRepository.getCurrentUser().setCurrentWeight(latestWeight);
+
+
+
         double bmi = signedInUser.calculateBMI();
         BigDecimal weightToLoseOrGain = signedInUser.calculateWeightToLoseOrGain();
         int caloriesPerDay = signedInUser.calculateCaloriesPerDay();
@@ -60,6 +72,8 @@ public class HomeController extends SceneController{
         System.out.println("Calories per Day: " + signedInUser.calculateCaloriesPerDay());
         System.out.println("determineWeightChangeRecommendation " + signedInUser.determineWeightChangeRecommendation());
 
+//        HistoryDaoImpl historyDao=new HistoryDaoImpl();
+//        System.out.println(historyDao.findLatestHistoryByUserId(UserRepository.getCurrentUser().getUserId()).getHistoryWeight());
     }
 
 

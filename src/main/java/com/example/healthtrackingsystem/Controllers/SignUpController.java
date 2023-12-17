@@ -1,5 +1,7 @@
 package com.example.healthtrackingsystem.Controllers;
+import com.example.healthtrackingsystem.Models.History;
 import com.example.healthtrackingsystem.Models.User;
+import com.example.healthtrackingsystem.dao.HistoryDaoImpl;
 import com.example.healthtrackingsystem.dao.UserDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,9 +64,10 @@ public class SignUpController {
                 item.setToggleGroup(genderToggleGroup);
             }
         } else {
-            System.out.println("genderMenuButton is null!");
         }
     }
+
+    private User createdAccount;
 
     @FXML
     private void handleSignUp(ActionEvent event) {
@@ -94,6 +97,7 @@ public class SignUpController {
 
                 UserDaoImpl userDao = new UserDaoImpl();
                 userDao.save(newUser);
+                createdAccount=newUser;
                 AccountCreatedSuccessfully(event);
 
 
@@ -123,6 +127,22 @@ public class SignUpController {
     @FXML
     public void AccountCreatedSuccessfully(ActionEvent event) throws IOException {
         try {
+            UserDaoImpl signedupUser =new UserDaoImpl();
+            int signedupUserId =signedupUser.getUserByEmail(createdAccount.getEmail()).getUserId();
+            BigDecimal signedupUserWeight =createdAccount.getCurrentWeight();
+
+            History history = History.builder()
+                    .historyWeight(signedupUserWeight)
+                    .historyDate(new Date())
+                    .userId(signedupUserId)
+                    .build();
+
+            // Save the history record
+            HistoryDaoImpl historyDao = new HistoryDaoImpl();
+            historyDao.save(history);
+
+
+
             root = FXMLLoader.load(getClass().getResource("/GUI files/AccountCreatedSuccessfully.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -153,4 +173,6 @@ public class SignUpController {
                 .filter(item -> item instanceof RadioMenuItem)
                 .toArray(RadioMenuItem[]::new);
     }
+
+
 }

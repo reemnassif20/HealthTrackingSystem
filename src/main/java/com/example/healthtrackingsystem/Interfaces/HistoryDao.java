@@ -14,6 +14,7 @@ public interface HistoryDao {
     void save(History history);
 
     void updateWeight(int historyId, BigDecimal newWeight);
+    History findLatestHistoryByUserId(int userId);
 
     void deleteById(int historyId);
 
