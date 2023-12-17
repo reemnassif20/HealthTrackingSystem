@@ -47,4 +47,13 @@ public class Food {
     public static FoodBuilder builder() {
         return new FoodBuilder();
     }
+    @Override
+    public String toString() {
+        return "Food{" +
+                "foodId=" + foodId +
+                ", foodName='" + foodName + '\'' +
+                ", foodType='" + foodType + '\'' +
+                ", caloriesPerHundredUnits=" + caloriesPerHundredUnits +
+                '}';
+    }
 }

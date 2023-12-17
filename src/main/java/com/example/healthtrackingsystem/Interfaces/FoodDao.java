@@ -9,7 +9,7 @@ public interface FoodDao {
     List<Food> findByFoodType(String foodType);
 
     Food findById(int foodId);
-
+    Food findByFoodName(String foodName);
     void save(Food food);
 
     void deleteById(int foodId);

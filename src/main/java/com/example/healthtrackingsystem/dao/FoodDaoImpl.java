@@ -1,8 +1,6 @@
 package com.example.healthtrackingsystem.dao;
-
 import com.example.healthtrackingsystem.Interfaces.FoodDao;
 import com.example.healthtrackingsystem.Models.Food;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -148,6 +146,38 @@ public class FoodDaoImpl implements FoodDao {
             }
         }
     }
+
+    @Override
+    public Food findByFoodName(String foodName) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return null;
+        }
+
+        String query = "SELECT * FROM food WHERE food_name = ?";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, foodName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int foodId = resultSet.getInt("food_id");
+                String foodType = resultSet.getString("food_type");
+                int caloriesPerHundredUnits = resultSet.getInt("calories_per_hundred_units");
+
+                return new Food(foodId, foodName, foodType, caloriesPerHundredUnits);
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public List<Food> findByFoodType(String foodType) {

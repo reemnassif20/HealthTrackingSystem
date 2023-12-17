@@ -2,15 +2,22 @@ package com.example.healthtrackingsystem.Controllers;
 
 import com.example.healthtrackingsystem.Interfaces.FoodDao;
 import com.example.healthtrackingsystem.Models.Food;
-import com.example.healthtrackingsystem.Models.User;
+import com.example.healthtrackingsystem.Models.UserFood;
 import com.example.healthtrackingsystem.dao.FoodDaoImpl;
-import com.example.healthtrackingsystem.dao.UserDaoImpl;
+import com.example.healthtrackingsystem.dao.UserFoodDaoImpl;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.Duration;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+
 
 public class MealsController extends SceneController{
 
@@ -34,6 +41,10 @@ public class MealsController extends SceneController{
     private TextField dinnerDessert;
     @FXML
     private TextField dinnerDrink;
+    @FXML
+    private Label successMessage;
+    private Timeline successMessageTimeline;
+
 
     @FXML
     private ComboBox<String> breakFastFoodComboBox;
@@ -66,8 +77,6 @@ public class MealsController extends SceneController{
     private String dinnerDrinkValue;
 
 
-
-
     @FXML
     public void initialize() {
         datePicker.setValue(LocalDate.now());
@@ -79,79 +88,103 @@ public class MealsController extends SceneController{
         updateFoodComboBox();
         updateDrinksComboBox();
 
+        successMessageTimeline = new Timeline(
+                new KeyFrame(Duration.seconds(0.5), this::hideSuccessMessage)
+        );
+        successMessageTimeline.setCycleCount(1);
+
+    }
+
+    private void hideSuccessMessage(ActionEvent event) {
+        successMessage.setText("");
+    }
+
+    private void showSuccessMessage() {
+        successMessage.setText("Added Successfully!");
+        successMessageTimeline.playFromStart();
     }
     private void handleDatePickerAction(ActionEvent event) {
         LocalDate selectedDate = datePicker.getValue();
         System.out.println("Selected date: " + selectedDate);
     }
 
+    private void handleMealSelection(String mealType, ComboBox<String> foodComboBox, TextField foodTextField) {
+        String foodValue = foodComboBox.getValue();
+        String foodQuantity = foodTextField.getText();
+
+        FoodDaoImpl foodDao = new FoodDaoImpl();
+        Food selectedFood = foodDao.findByFoodName(foodValue);
+
+        int userId = UserRepository.getCurrentUser().getUserId();
+        int foodId = selectedFood.getFoodId();
+        int quantity = 0;
+        try {
+            quantity = Integer.parseInt(foodQuantity);
+        } catch (NumberFormatException e) {
+        }
+
+        LocalDate foodDate = datePicker.getValue();
+        Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Date utilDate = Date.from(instant);
+
+        UserFood userFood = UserFood.builder()
+                .userId(userId)
+                .foodId(foodId)
+                .mealType(mealType)
+                .quantity(quantity)
+                .foodDate(utilDate)
+                .build();
+
+        UserFoodDaoImpl userFoodDao = new UserFoodDaoImpl();
+        userFoodDao.save(userFood);
+        showSuccessMessage();
+    }
 
     @FXML
     private void handleBreakFastFoodSelection() {
-        breakFastFoodValue = breakFastFoodComboBox.getValue();
-        String breakFastFoodQuantity=breakFastFood.getText();
-        System.out.println("Selected Value for Breakfast Food: " + breakFastFoodValue );
-        System.out.println("Selected Value for Breakfast breakFastDrinkQuantity: " + breakFastFoodQuantity );
+        handleMealSelection("Breakfast", breakFastFoodComboBox, breakFastFood);
     }
 
     @FXML
     private void handleBreakFastDessertSelection() {
-        breakFastDessertValue = breakFastDessertComboBox.getValue();
-        String breakFastDessertQuantity=breakFastDessert.getText();
-        System.out.println("Selected Value for Breakfast Dessert: " + breakFastDessertValue+ breakFastDessertQuantity);
+        handleMealSelection("Breakfast", breakFastDessertComboBox, breakFastDessert);
     }
     @FXML
     private void handleBreakFastDrinkSelection() {
-        breakFastDrinkValue = breakFastDrinkComboBox.getValue();
-        String breakFastDrinkQuantity=breakFastDrink.getText();
-        System.out.println("Selected Value for Breakfast Drink: " + breakFastDrinkValue+ breakFastDrinkQuantity);
+        handleMealSelection("Breakfast", breakFastDrinkComboBox, breakFastDrink);
     }
 
     @FXML
     private void handleLunchFoodSelection() {
-        lunchFoodValue = lunchFoodComboBox.getValue();
-        String lunchFoodQuantity=lunchFood.getText();
-
-        System.out.println("Selected Value for Lunch Food: " + lunchFoodValue+lunchFoodQuantity);
+        handleMealSelection("Lunch", lunchFoodComboBox, lunchFood);
     }
 
     @FXML
     private void handleLunchDessertSelection() {
-        lunchDessertValue = lunchDessertComboBox.getValue();
-        String lunchDessertQuantity=lunchDessert.getText();
+        handleMealSelection("Lunch", lunchDessertComboBox, lunchDessert);
 
-        System.out.println("Selected Value for Lunch Dessert: " + lunchDessertValue+lunchDessertQuantity);
     }
 
     @FXML
     private void handleLunchDrinkSelection() {
-        lunchDrinkValue = lunchDrinkComboBox.getValue();
-        String lunchDrinkQuantity=lunchDrink.getText();
+        handleMealSelection("Lunch", lunchDrinkComboBox, lunchDrink);
 
-        System.out.println("Selected Value for Lunch Drink: " + lunchDrinkValue+lunchDrinkQuantity);
     }
 
     @FXML
     private void handleDinnerFoodSelection() {
-        dinnerFoodValue = dinnerFoodComboBox.getValue();
-        String dinnerFoodQuantity=dinnerFood.getText();
+        handleMealSelection("Dinner", dinnerFoodComboBox, dinnerFood);
 
-        System.out.println("Selected Value for Dinner Food: " + dinnerFoodValue+dinnerFoodQuantity);
     }
 
     @FXML
     private void handleDinnerDessertSelection() {
-        dinnerDessertValue = dinnerDessertComboBox.getValue();
-        String dinnerDessertQuantity=dinnerDessert.getText();
-
-        System.out.println("Selected Value for Dinner Dessert: " + dinnerDessertValue+dinnerDessertQuantity);
+        handleMealSelection("Dinner", dinnerDessertComboBox, dinnerDessert);
     }
 
     @FXML
     private void handleDinnerDrinkSelection() {
-        dinnerDrinkValue = dinnerDrinkComboBox.getValue();
-        String dinnerDrinkQuantity=dinnerDrink.getText();
-        System.out.println("Selected Value for Dinner Drink: " + dinnerDrinkValue+dinnerDrinkQuantity);
+        handleMealSelection("Dinner", dinnerDrinkComboBox, dinnerDrink);
     }
 
 
@@ -202,7 +235,6 @@ public class MealsController extends SceneController{
         FoodDao foodDao = new FoodDaoImpl();
         return foodDao.findByFoodType("Drink");
     }
-
 
 
 

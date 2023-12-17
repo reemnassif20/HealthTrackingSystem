@@ -128,7 +128,6 @@ public class UserFoodDaoImpl implements UserFoodDao {
 
         return userFoods;
     }
-
     @Override
     public void save(UserFood userFood) {
         Connection con = DBConnection.getConnection();
@@ -136,15 +135,42 @@ public class UserFoodDaoImpl implements UserFoodDao {
             return;
         }
 
-        String query = "INSERT INTO UserFood (user_id, food_id, meal_type, quantity, food_date) VALUES (?, ?, ?, ?, ?);";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, userFood.getUserId());
-            preparedStatement.setInt(2, userFood.getFoodId());
-            preparedStatement.setString(3, userFood.getMealType());
-            preparedStatement.setInt(4, userFood.getQuantity());
-            preparedStatement.setDate(5, new java.sql.Date(userFood.getFoodDate().getTime()));
+        String querySelect = "SELECT user_id FROM UserFood WHERE user_id = ? AND food_id = ? AND meal_type = ? AND food_date = ?";
 
-            preparedStatement.executeUpdate();
+        String queryInsert = "INSERT INTO UserFood (user_id, food_id, meal_type, quantity, food_date) VALUES (?, ?, ?, ?, ?);";
+
+        try (PreparedStatement selectStatement = con.prepareStatement(querySelect)) {
+            selectStatement.setInt(1, userFood.getUserId());
+            selectStatement.setInt(2, userFood.getFoodId());
+            selectStatement.setString(3, userFood.getMealType());
+            selectStatement.setDate(4, new java.sql.Date(userFood.getFoodDate().getTime()));
+
+            ResultSet resultSet = selectStatement.executeQuery();
+
+            if (resultSet.next()) {
+                // Row already exists, update quantity
+                String queryUpdate = "UPDATE UserFood SET quantity = quantity + ? WHERE user_id = ? AND food_id = ? AND meal_type = ? AND food_date = ?";
+                try (PreparedStatement updateStatement = con.prepareStatement(queryUpdate)) {
+                    updateStatement.setInt(1, userFood.getQuantity());
+                    updateStatement.setInt(2, userFood.getUserId());
+                    updateStatement.setInt(3, userFood.getFoodId());
+                    updateStatement.setString(4, userFood.getMealType());
+                    updateStatement.setDate(5, new java.sql.Date(userFood.getFoodDate().getTime()));
+
+                    updateStatement.executeUpdate();
+                }
+            } else {
+                // Row doesn't exist, insert new row
+                try (PreparedStatement insertStatement = con.prepareStatement(queryInsert)) {
+                    insertStatement.setInt(1, userFood.getUserId());
+                    insertStatement.setInt(2, userFood.getFoodId());
+                    insertStatement.setString(3, userFood.getMealType());
+                    insertStatement.setInt(4, userFood.getQuantity());
+                    insertStatement.setDate(5, new java.sql.Date(userFood.getFoodDate().getTime()));
+
+                    insertStatement.executeUpdate();
+                }
+            }
         } catch (SQLException se) {
             se.printStackTrace();
         } finally {
@@ -155,6 +181,7 @@ public class UserFoodDaoImpl implements UserFoodDao {
             }
         }
     }
+
 
     @Override
     public void deleteByUserIdAndFoodIdAndFoodDate(int userId, int foodId, Date foodDate) {
