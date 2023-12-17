@@ -10,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.time.Instant;
@@ -42,7 +43,7 @@ public class MealsController extends SceneController{
     @FXML
     private TextField dinnerDrink;
     @FXML
-    private Label successMessage;
+    private Text successMessage;
     private Timeline successMessageTimeline;
 
 
@@ -107,16 +108,27 @@ public class MealsController extends SceneController{
         String foodValue = foodComboBox.getValue();
         String foodQuantity = foodTextField.getText();
 
+        if (foodQuantity == null || foodQuantity.trim().isEmpty()) {
+            showErrorMessage("Please enter a valid quantity.");
+            return;
+        }
+
+        int quantity = 0;
+        try {
+            quantity = Integer.parseInt(foodQuantity);
+            if (quantity <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            showErrorMessage("Please enter a valid positive number for quantity.");
+            return;
+        }
+
         FoodDaoImpl foodDao = new FoodDaoImpl();
         Food selectedFood = foodDao.findByFoodName(foodValue);
 
         int userId = UserRepository.getCurrentUser().getUserId();
         int foodId = selectedFood.getFoodId();
-        int quantity = 0;
-        try {
-            quantity = Integer.parseInt(foodQuantity);
-        } catch (NumberFormatException e) {
-        }
 
         LocalDate foodDate = datePicker.getValue();
         Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
@@ -132,6 +144,7 @@ public class MealsController extends SceneController{
 
         UserFoodDaoImpl userFoodDao = new UserFoodDaoImpl();
         userFoodDao.save(userFood);
+
         double calories = selectedFood.getCaloriesPerHundredUnits();
         double addedCalories = calories * (quantity / 100.0);
         totalCalories += addedCalories;
@@ -139,6 +152,11 @@ public class MealsController extends SceneController{
         foodTextField.clear();
         showSuccessMessage();
     }
+
+    private void showErrorMessage(String message) {
+        successMessage.setText("Error: " + message);
+    }
+
 
     @FXML
     private void handleBreakFastFoodSelection() {

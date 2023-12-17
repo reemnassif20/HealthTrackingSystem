@@ -90,7 +90,7 @@
         <ComboBox fx:id="dinnerFoodComboBox" layoutX="276.0" layoutY="483.0" prefHeight="31.0" prefWidth="99.0" />
         <ComboBox fx:id="dinnerDessertComboBox" layoutX="276.0" layoutY="519.0" prefHeight="31.0" prefWidth="99.0" />
         <ComboBox fx:id="dinnerDrinkComboBox" layoutX="276.0" layoutY="555.0" prefHeight="31.0" prefWidth="99.0" />
-      <Label fx:id="successMessage" layoutX="176.0" layoutY="636.0" prefHeight="21.0" prefWidth="143.0" text="" textFill="#16dd00" />
+      <Text fx:id="successMessage" layoutX="26.0" layoutY="649.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="429.6708984375" />
 
     </children>
 </AnchorPane>
