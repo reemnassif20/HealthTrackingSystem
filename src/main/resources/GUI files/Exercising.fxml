@@ -2,10 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -27,42 +26,20 @@
       <Button layoutX="357.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToSettings" prefHeight="41.0" prefWidth="120.0" text="Settings" />
 
        <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercising" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
-       <Text  layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="479.9999993443489"
-              text="Training help your body to be stronger, Burn Calories as well"></Text>
+       <Text layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training help your body to be stronger, Burn Calories as well" textAlignment="CENTER" wrappingWidth="479.9999993443489" />
       <DatePicker layoutX="221.0" layoutY="155.0" prefHeight="31.0" prefWidth="218.0" />
       <Label layoutX="34.0" layoutY="160.0" prefHeight="21.0" prefWidth="143.0" text="Training date" />
-      <Label layoutX="34.0" layoutY="216.0" prefHeight="21.0" prefWidth="143.0" text="Type of daily Activity" />
-      <MenuButton layoutX="221.0" layoutY="211.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" text="Choose">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Low-Intensity Activities" />
-          <MenuItem mnemonicParsing="false" text="Moderate-Intensity Activities" />
-            <MenuItem mnemonicParsing="false" text="Vigorous-Intensity Activities" />
-        </items>
-      </MenuButton>
-      <Label layoutX="34.0" layoutY="270.0" prefHeight="21.0" prefWidth="197.0" text="Today's Genaral Activity Was " />
-      <TextField layoutX="231.0" layoutY="265.0" prefHeight="31.0" prefWidth="48.0" />
-      <Label layoutX="290.0" layoutY="270.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
-      <MenuButton layoutX="343.0" layoutY="360.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" text="choose">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Squat" />
-            <MenuItem mnemonicParsing="false" text="Upper Body" />
-            <MenuItem mnemonicParsing="false" text="Plank" />
-            <MenuItem mnemonicParsing="false" text="Abdominal Exercises" />
-            <MenuItem mnemonicParsing="false" text="Balance and Stability" />
-         </items>
-      </MenuButton>
+      <Label layoutX="34.0" layoutY="270.0" prefHeight="21.0" prefWidth="197.0" text="General Activity Was " />
+      <TextField layoutX="163.0" layoutY="265.0" prefHeight="31.0" prefWidth="48.0" />
+      <Label layoutX="218.0" layoutY="270.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
+       <ComboBox fx:id="GYMTrainingComboBox" layoutX="268.0" layoutY="360.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Activity" />
+
       <Button layoutX="367.0" layoutY="308.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
-      <Label layoutX="38.0" layoutY="365.0" prefHeight="21.0" prefWidth="197.0" text="Today's GYM Training Was " />
-      <TextField layoutX="235.0" layoutY="360.0" prefHeight="31.0" prefWidth="48.0" />
-      <Label layoutX="294.0" layoutY="365.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
-      <MenuButton layoutX="341.0" layoutY="265.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" text="Choose">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Walking " />
-            <MenuItem mnemonicParsing="false" text="Swimming" />
-            <MenuItem mnemonicParsing="false" text="Running" />
-            <MenuItem mnemonicParsing="false" text="Bicycling" />
-         </items>
-      </MenuButton>
+      <Label layoutX="38.0" layoutY="365.0" prefHeight="21.0" prefWidth="197.0" text="GYM Training Was " />
+      <TextField layoutX="164.0" layoutY="360.0" prefHeight="31.0" prefWidth="48.0" />
+      <Label layoutX="216.0" layoutY="365.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
+       <ComboBox fx:id="GeneralActivityComboBox" layoutX="266.0" layoutY="265.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Training" />
+
       <Button layoutX="371.0" layoutY="404.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <ScrollPane layoutX="35.0" layoutY="448.0" prefHeight="162.0" prefWidth="411.0">
         <content>

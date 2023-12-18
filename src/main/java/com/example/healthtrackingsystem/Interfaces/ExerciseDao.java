@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ExerciseDao {
     List<Exercise> findAll();
+    List<Exercise> findByExerciseType(String exerciseType);
 
     Exercise findById(int exerciseId);
 

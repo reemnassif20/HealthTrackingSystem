@@ -145,4 +145,45 @@ public class ExerciseDaoImpl implements ExerciseDao {
             }
         }
     }
+
+    @Override
+    public List<Exercise> findByExerciseType(String exerciseType) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return null;
+        }
+
+        List<Exercise> exercises = new LinkedList<>();
+
+        String query = "SELECT * FROM Exercise WHERE exercise_type=?;";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, exerciseType);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Exercise exercise = Exercise.builder()
+                        .exerciseId(resultSet.getInt("exercise_id"))
+                        .exerciseType(resultSet.getString("exercise_type"))
+                        .exerciseName(resultSet.getString("exercise_name"))
+                        .activityTypeCalories(resultSet.getInt("activity_type_calories"))
+                        .build();
+
+                exercises.add(exercise);
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return exercises;
+    }
+
+
+
 }
