@@ -2,7 +2,6 @@ package com.example.healthtrackingsystem.Controllers;
 import com.example.healthtrackingsystem.Models.User;
 import com.example.healthtrackingsystem.dao.UserDaoImpl;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -64,7 +63,7 @@ public class SceneController {
         stage.show();
     }
     public void SwitchToAlarms(ActionEvent event) throws IOException {
-        root=FXMLLoader.load(getClass().getResource("/GUI files/Alarms.fxml"));
+        root=FXMLLoader.load(getClass().getResource("/GUI files/Reminder.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);

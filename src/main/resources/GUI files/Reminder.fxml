@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="480.0" stylesheets="@/CSS files/Alarms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.healthtrackingsystem.Controllers.ReminderController">
+    <children>
+        <ButtonBar layoutX="-19.0" layoutY="666.0" prefHeight="49.0" prefWidth="495.0">
+            <buttons>
+                <Button mnemonicParsing="false" onAction="#SwitchToExercising" prefHeight="71.0" prefWidth="120.0" text="EXERCISING" />
+                <Button mnemonicParsing="false" onAction="#SwitchToMeals" prefHeight="71.0" prefWidth="120.0" text="MEALS" />
+                <Button mnemonicParsing="false" onAction="#SwitchToAlarms" prefHeight="71.0" prefWidth="120.0" text="ALARMS" />
+                <Button mnemonicParsing="false" onAction="#SwitchToHome" prefHeight="49.0" prefWidth="120.0" text="HOME" />
+            </buttons>
+        </ButtonBar>
+        <Button layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToHistory" prefHeight="41.0" prefWidth="120.0" text="History" />
+        <Button layoutX="357.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToSettings" prefHeight="41.0" prefWidth="120.0" text="Settings" />
+
+        <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reminders" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
+        <Text layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drink water like it's your job, and your health is the paycheck." textAlignment="CENTER" wrappingWidth="479.9999993443489" />
+
+        <TableView fx:id="reminderTable" layoutX="45.0" layoutY="120.0" prefHeight="309.0" prefWidth="400.0">
+            <columns>
+                <TableColumn fx:id="reminderMessageColumn" prefWidth="144.0" text="Reminder Message">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="reminderMessage" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="reminderPeriodColumn" prefWidth="145.0" text="Reminder Period">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="reminderPeriod" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <Separator layoutX="142.0" layoutY="429.0" prefWidth="200.0" />
+      <Text layoutX="10.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set new Reminder" textAlignment="CENTER" wrappingWidth="464.51513671875" />
+      <Label layoutX="45.0" layoutY="482.0" prefHeight="21.0" prefWidth="143.0" text="Reminder message" />
+      <TextField fx:id="reminderMessageTextField" layoutX="236.0" layoutY="478.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="45.0" layoutY="540.0" prefHeight="21.0" prefWidth="143.0" text="Reminder Period" />
+        <ComboBox fx:id="reminderPeriodComboBox" layoutX="236.0" layoutY="535.0" prefHeight="31.0" prefWidth="187.0" promptText="Select Period">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="30 min" />
+                    <String fx:value="1 hour" />
+                    <String fx:value="4 hours" />
+                    <String fx:value="6 hours" />
+                    <String fx:value="8 hours" />
+                    <String fx:value="12 hours" />
+                    <String fx:value="24 hours" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <Button fx:id="setReminderButton" layoutX="356.0" layoutY="586.0" mnemonicParsing="false" onAction="#handleSetReminder" prefHeight="31.0" prefWidth="67.0" text="Set" />
+      <Text fx:id="message" layoutX="41.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="383.51513671875" />
+    </children>
+</AnchorPane>
