@@ -11,6 +11,6 @@ public interface ExerciseDao {
     Exercise findById(int exerciseId);
 
     void save(Exercise exercise);
-
+    Exercise findOneByExerciseName(String exerciseName);
     void deleteById(int exerciseId);
 }

@@ -184,6 +184,38 @@ public class ExerciseDaoImpl implements ExerciseDao {
         return exercises;
     }
 
+    @Override
+    public Exercise findOneByExerciseName(String exerciseName) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return null;
+        }
 
+        String query = "SELECT * FROM Exercise WHERE exercise_name LIKE ? LIMIT 1;";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, "%" + exerciseName + "%");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return Exercise.builder()
+                        .exerciseId(resultSet.getInt("exercise_id"))
+                        .exerciseType(resultSet.getString("exercise_type"))
+                        .exerciseName(resultSet.getString("exercise_name"))
+                        .activityTypeCalories(resultSet.getInt("activity_type_calories"))
+                        .build();
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return null;
+    }
 
 }

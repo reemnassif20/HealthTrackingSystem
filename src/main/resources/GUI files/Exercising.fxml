@@ -29,19 +29,19 @@
        <Text layoutX="1.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training help your body to be stronger, Burn Calories as well" textAlignment="CENTER" wrappingWidth="479.9999993443489" />
       <DatePicker fx:id="datePicker" layoutX="221.0" layoutY="155.0" prefHeight="31.0" prefWidth="218.0" />
       <Label layoutX="34.0" layoutY="160.0" prefHeight="21.0" prefWidth="143.0" text="Training date" />
-      <Label layoutX="34.0" layoutY="270.0" prefHeight="21.0" prefWidth="197.0" text="General Activity Was " />
-      <TextField fx:id="generalActivityTime" layoutX="163.0" layoutY="265.0" prefHeight="31.0" prefWidth="48.0" />
-      <Label layoutX="218.0" layoutY="270.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
-       <ComboBox fx:id="GYMTrainingComboBox" layoutX="268.0" layoutY="360.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Activity" />
+      <Label layoutX="34.0" layoutY="228.0" prefHeight="21.0" prefWidth="197.0" text="General Activity Was " />
+      <TextField fx:id="generalActivityTime" layoutX="163.0" layoutY="223.0" prefHeight="31.0" prefWidth="48.0" />
+      <Label layoutX="218.0" layoutY="228.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
+       <ComboBox fx:id="GYMTrainingComboBox" layoutX="268.0" layoutY="318.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Activity" />
 
-      <Button layoutX="367.0" layoutY="308.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
-      <Label layoutX="38.0" layoutY="365.0" prefHeight="21.0" prefWidth="197.0" text="GYM Training Was " />
-      <TextField fx:id="GYMTrainingTime" layoutX="164.0" layoutY="360.0" prefHeight="31.0" prefWidth="48.0" />
-      <Label layoutX="216.0" layoutY="365.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
-       <ComboBox fx:id="GeneralActivityComboBox" layoutX="266.0" layoutY="265.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Training" />
+      <Button onAction="#handleGeneralActivitySelection" layoutX="367.0" layoutY="266.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
+      <Label layoutX="38.0" layoutY="323.0" prefHeight="21.0" prefWidth="197.0" text="GYM Training Was " />
+      <TextField fx:id="GYMTrainingTime" layoutX="164.0" layoutY="318.0" prefHeight="31.0" prefWidth="48.0" />
+      <Label layoutX="216.0" layoutY="323.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
+       <ComboBox fx:id="GeneralActivityComboBox" layoutX="266.0" layoutY="223.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Training" />
 
-      <Button layoutX="371.0" layoutY="404.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
-      <ScrollPane layoutX="35.0" layoutY="448.0" prefHeight="162.0" prefWidth="411.0">
+      <Button onAction="#handleGYMTrainingSelection" layoutX="371.0" layoutY="362.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
+      <ScrollPane layoutX="35.0" layoutY="439.0" prefHeight="162.0" prefWidth="411.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -56,7 +56,8 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Label layoutX="145.0" layoutY="628.0" prefHeight="21.0" prefWidth="197.0" text="Total Calories Burnt is" />
-      <Label layoutX="300.0" layoutY="628.0" prefHeight="21.0" prefWidth="58.0" text="X" />
+      <Label layoutX="145.0" layoutY="619.0" prefHeight="21.0" prefWidth="197.0" text="Total Calories Burnt is" />
+      <Label fx:id="totalBurnedCaloriesText" layoutX="300.0" layoutY="619.0" prefHeight="21.0" prefWidth="58.0" text="X" />
+      <Text fx:id="message" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
    </children>
 </AnchorPane>
