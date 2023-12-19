@@ -251,7 +251,8 @@ public class MealsController extends SceneController{
         FoodDao foodDao = new FoodDaoImpl();
         return foodDao.findByFoodType("Drink");
     }
-    private List<UserFood> getUserFoodsByUserIdAndDate() {
+
+    private void calculateAndDisplayTotalEatenCalories() {
         UserFoodDaoImpl userFoodDao = new UserFoodDaoImpl();
 
         int userId = UserRepository.getCurrentUser().getUserId();
@@ -260,23 +261,7 @@ public class MealsController extends SceneController{
         Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Date utilDate = Date.from(instant);
 
-        return userFoodDao.findByUserIdAndDate(userId, utilDate);
-    }
-
-    private Food getFoodById(int foodId) {
-        FoodDaoImpl foodDao = new FoodDaoImpl();
-        return foodDao.findById(foodId);
-    }
-
-    private void calculateAndDisplayTotalEatenCalories() {
-        List<UserFood> userFoods = getUserFoodsByUserIdAndDate();
-
-        double totalCalories = userFoods.stream()
-                .mapToDouble(userFood -> {
-                    Food food = getFoodById(userFood.getFoodId());
-                    return food != null ? food.getCaloriesPerHundredUnits() * (userFood.getQuantity() / 100.0) : 0.0;
-                })
-                .sum();
+        totalCalories =userFoodDao.calculateTotalCalories(userId,utilDate);
 
         totalCaloriesLabel.setText(String.valueOf(totalCalories));
     }

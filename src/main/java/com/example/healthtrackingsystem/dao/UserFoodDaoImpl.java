@@ -1,6 +1,8 @@
 package com.example.healthtrackingsystem.dao;
 
+import com.example.healthtrackingsystem.Interfaces.FoodDao;
 import com.example.healthtrackingsystem.Interfaces.UserFoodDao;
+import com.example.healthtrackingsystem.Models.Food;
 import com.example.healthtrackingsystem.Models.UserFood;
 
 import java.sql.Connection;
@@ -246,6 +248,25 @@ public class UserFoodDaoImpl implements UserFoodDao {
         }
 
         return userFoods;
+    }
+    @Override
+    public double calculateTotalCalories(int userId, Date foodDate) {
+        List<UserFood> userFoods = findByUserIdAndDate(userId, foodDate);
+        double totalCalories = 0;
+
+        if (userFoods != null) {
+            for (UserFood userFood : userFoods) {
+                FoodDao foodDao = new FoodDaoImpl();
+                Food food = foodDao.findById(userFood.getFoodId());
+
+                if (food != null) {
+                    double calories = food.getCaloriesPerHundredUnits();
+                    totalCalories += calories * (userFood.getQuantity() / 100.0);
+                }
+            }
+        }
+
+        return totalCalories;
     }
 
 

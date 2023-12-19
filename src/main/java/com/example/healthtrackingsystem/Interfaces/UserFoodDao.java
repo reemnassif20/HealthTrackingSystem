@@ -14,6 +14,6 @@ public interface UserFoodDao {
 
     void save(UserFood userFood);
     List<UserFood> findByUserIdAndDate(int userId, Date foodDate);
-
+    double calculateTotalCalories(int userId, Date foodDate) ;
     void deleteByUserIdAndFoodIdAndFoodDate(int userId, int foodId, Date foodDate);
 }
