@@ -13,7 +13,7 @@ import java.util.List;
 public class HistoryDaoImpl implements HistoryDao {
 
     @Override
-    public List<History> findAllByUserIdAndDate(int userId, Date historyDate) {
+    public List<History> findAllByUserId(int userId) {
         Connection con = DBConnection.getConnection();
         if (con == null) {
             return null;
@@ -21,10 +21,9 @@ public class HistoryDaoImpl implements HistoryDao {
 
         List<History> histories = new ArrayList<>();
 
-        String query = "SELECT * FROM history WHERE user_id = ? AND history_date = ?;";
+        String query = "SELECT * FROM history WHERE user_id = ?";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, userId);
-            preparedStatement.setDate(2, new java.sql.Date(historyDate.getTime()));
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

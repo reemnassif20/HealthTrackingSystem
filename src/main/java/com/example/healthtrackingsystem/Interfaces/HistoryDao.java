@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface HistoryDao {
-    List<History> findAllByUserIdAndDate(int userId, Date historyDate);
+    List<History> findAllByUserId(int userId);
 
     History findById(int historyId);
 
