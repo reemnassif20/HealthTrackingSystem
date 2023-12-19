@@ -16,17 +16,15 @@
       <Text fx:id="CurrentBMI" layoutX="88.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
       <Text layoutX="163.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Weight" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
       <Text fx:id="CurrentWeight" layoutX="238.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
-      <Text layoutX="90.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I it is better to " wrappingWidth="107.01513671875" />
-      <Text fx:id="ChangeRecommendation" layoutX="178.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="107.01513671875" />
-      <Text fx:id="WeightChange" layoutX="218.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513671875" />
-      <Text layoutX="259.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KG of your Weight" wrappingWidth="209.01513671875" />
-      <Text layoutX="109.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You used " wrappingWidth="107.01513671875" />
-      <Text layoutX="168.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513649523258" />
-      <Text layoutX="198.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal out of" wrappingWidth="107.01513290405273" />
-      <Text fx:id="CaloriesPerDay" layoutX="262.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513835787773" />
-      <Text layoutX="302.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal Today !" wrappingWidth="107.01513290405273" />
-      <Text layoutX="103.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Current Weight Status is " wrappingWidth="199.99999552965164" />
-      <Text fx:id="WeightStatus" layoutX="284.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="142.01513850688934" />
+      <Text layoutX="90.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I it is better to " wrappingWidth="107.01513671875" />
+      <Text fx:id="ChangeRecommendation" layoutX="178.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="107.01513671875" />
+      <Text fx:id="WeightChange" layoutX="218.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513671875" />
+      <Text layoutX="259.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KG of your Weight" wrappingWidth="209.01513671875" />
+      <Text layoutX="82.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your  enterd your body " wrappingWidth="173.01513671875" />
+      <Text fx:id="CaloriesPerDay" layoutX="284.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513835787773" />
+      <Text layoutX="303.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cal per day" wrappingWidth="107.01513290405273" />
+      <Text layoutX="122.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Current Weight Status is " wrappingWidth="199.99999552965164" />
+      <Text fx:id="WeightStatus" layoutX="303.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="142.01513850688934" />
       <ButtonBar layoutX="-19.0" layoutY="666.0" prefHeight="49.0" prefWidth="495.0">
          <buttons>
             <Button mnemonicParsing="false" onAction="#SwitchToExercising" prefHeight="71.0" prefWidth="120.0" styleClass="sceneButton" text="EXERCISING" />
@@ -40,10 +38,19 @@
 
       <Button layoutX="357.0" layoutY="3.0" mnemonicParsing="false" onAction="#SwitchToSettings" prefHeight="41.0" prefWidth="120.0" styleClass="sceneButton" text="Settings" />
       <Separator layoutX="138.0" layoutY="311.0" prefWidth="200.0" />
-      <Separator layoutX="141.0" layoutY="400.0" prefWidth="200.0" />
-      <Separator layoutX="141.0" layoutY="486.0" prefWidth="200.0" />
-      <Separator layoutX="141.0" layoutY="577.0" prefWidth="200.0" />
+      <Separator layoutX="147.0" layoutY="565.0" prefWidth="200.0" />
+      <Separator layoutX="140.0" layoutY="441.0" prefWidth="200.0" />
+      <Separator layoutX="141.0" layoutY="377.0" prefWidth="200.0" />
       <Text layoutX="308.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optimal  Weight" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
       <Text fx:id="OptimalWeight" layoutX="395.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22" textAlignment="CENTER" wrappingWidth="60.015138387680054" />
+      <Text layoutX="122.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You eated  " wrappingWidth="86.99999552965164" />
+      <Text layoutX="231.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cal Today" wrappingWidth="142.01513850688934" />
+      <Separator layoutX="141.0" layoutY="505.0" prefWidth="200.0" />
+      <Text fx:id="CaloriesPerDay1" layoutX="228.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="38.01513835787773" />
+      <Text fx:id="CaloriesPerDay2" layoutX="244.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" text="out" wrappingWidth="38.01513835787773" />
+      <Text layoutX="194.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="60.01513637602329" />
+      <Text layoutX="121.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You eated  " wrappingWidth="86.99999552965164" />
+      <Text layoutX="230.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cal Today" wrappingWidth="142.01513850688934" />
+      <Text layoutX="193.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" wrappingWidth="60.01513637602329" />
    </children>
 </AnchorPane>

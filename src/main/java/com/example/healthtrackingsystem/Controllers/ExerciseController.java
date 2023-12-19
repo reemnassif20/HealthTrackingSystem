@@ -135,11 +135,7 @@ public class ExerciseController extends SceneController {
 
         UserExerciseDaoImpl userExerciseDao = new UserExerciseDaoImpl();
         userExerciseDao.save(userExercise);
-
-        double calories = selectedExercise.getActivityTypeCalories();
-        double burnedCalories = calories * exerciseTimeIntervl;
-        totalBurnedCalories += burnedCalories;
-        totalBurnedCaloriesText.setText(String.valueOf(totalBurnedCalories));
+        calculateAndDisplayTotalBurnedCalories();
         exerciseTextField.clear();
         showMessage("Added Successfully");
         populateExerciseData();
@@ -221,6 +217,7 @@ public class ExerciseController extends SceneController {
                 );
 
                 exerciseData.add(exerciseTableRow);
+                calculateAndDisplayTotalBurnedCalories();
             }
         }
     }
@@ -259,6 +256,8 @@ public class ExerciseController extends SceneController {
         );
 
         populateExerciseData();
+        calculateAndDisplayTotalBurnedCalories();
+
     }
 
     private void calculateAndDisplayTotalBurnedCalories() {
@@ -266,8 +265,8 @@ public class ExerciseController extends SceneController {
 
         int userId = UserRepository.getCurrentUser().getUserId();
 
-        LocalDate foodDate = datePicker.getValue();
-        Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        LocalDate exerciseDate = datePicker.getValue();
+        Instant instant = exerciseDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Date utilDate = Date.from(instant);
         double totalCalories= userExerciseDao.calculateTotalBurnedCalories(userId,utilDate);
         totalBurnedCaloriesText.setText(String.valueOf(totalCalories));
