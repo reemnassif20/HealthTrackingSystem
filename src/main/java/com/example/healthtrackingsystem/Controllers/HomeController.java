@@ -1,7 +1,8 @@
 package com.example.healthtrackingsystem.Controllers;
-import com.example.healthtrackingsystem.Models.History;
 import com.example.healthtrackingsystem.Models.User;
 import com.example.healthtrackingsystem.dao.HistoryDaoImpl;
+import com.example.healthtrackingsystem.dao.UserExerciseDaoImpl;
+import com.example.healthtrackingsystem.dao.UserFoodDaoImpl;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
@@ -36,6 +37,12 @@ public class HomeController extends SceneController{
 
     @FXML
     private Text OptimalWeight;
+    @FXML
+    private Text totalEatenCaloriesText;
+    @FXML
+    private Text totalBurnedCaloriesText;
+    @FXML
+    private Text totalEnteredCalories;
 
 
     private User signedInUser;
@@ -65,16 +72,46 @@ public class HomeController extends SceneController{
         WeightStatus.setText(signedInUser.determineWeightStatus());
         OptimalWeight.setText(String.valueOf(signedInUser.calculateOptimalWeight()));
 
-        System.out.println("BMI: " + signedInUser.calculateBMI());
-        System.out.println("Optimal Weight: " + signedInUser.calculateOptimalWeight());
-        System.out.println("Weight Status: " + signedInUser.determineWeightStatus());
-        System.out.println("Weight to Lose or Gain: " + signedInUser.calculateWeightToLoseOrGain());
-        System.out.println("Calories per Day: " + signedInUser.calculateCaloriesPerDay());
-        System.out.println("determineWeightChangeRecommendation " + signedInUser.determineWeightChangeRecommendation());
 
-//        HistoryDaoImpl historyDao=new HistoryDaoImpl();
-//        System.out.println(historyDao.findLatestHistoryByUserId(UserRepository.getCurrentUser().getUserId()).getHistoryWeight());
+        calculateAndDisplayTotalEatenCalories();
+        calculateAndDisplayTotalBurnedCalories();
+        calculateAndDisplayTotalEnteredCalories();
     }
+
+
+    private double calculateAndDisplayTotalEatenCalories() {
+        UserFoodDaoImpl userFoodDao =new UserFoodDaoImpl();
+
+        int userId = UserRepository.getCurrentUser().getUserId();
+
+        LocalDate foodDate = LocalDate.now();
+        Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Date utilDate = Date.from(instant);
+
+        double totalCalories= userFoodDao.calculateTotalCalories(userId,utilDate);
+        totalEatenCaloriesText.setText(String.valueOf(totalCalories));
+        return  totalCalories;
+    }
+
+
+    private double calculateAndDisplayTotalBurnedCalories() {
+        UserExerciseDaoImpl userExerciseDao = new UserExerciseDaoImpl();
+
+        int userId = UserRepository.getCurrentUser().getUserId();
+
+        LocalDate exerciseDate = LocalDate.now();
+        Instant instant = exerciseDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Date utilDate = Date.from(instant);
+        double totalCalories= userExerciseDao.calculateTotalBurnedCalories(userId,utilDate);
+        totalBurnedCaloriesText.setText(String.valueOf(totalCalories));
+        return totalCalories;
+    }
+    private void calculateAndDisplayTotalEnteredCalories(){
+        double enteringBodyCalories= calculateAndDisplayTotalEatenCalories()-calculateAndDisplayTotalBurnedCalories();
+        totalEnteredCalories.setText(String.valueOf(enteringBodyCalories));
+
+    }
+
 
 
 }

@@ -202,6 +202,7 @@ public class HistoryController extends SceneController{
                         food.getFoodId()
                 );
                 foodDataList.add(foodRow);
+                calculateAndDisplayTotalEatenCalories();
             }
 
         }
@@ -226,6 +227,7 @@ public class HistoryController extends SceneController{
         userFoodDao.deleteByUserIdAndFoodIdAndFoodDate(userId, foodRow.getFoodId(), utilDate);
 
         foodDataList.remove(foodRow);
+        calculateAndDisplayTotalEatenCalories();
 
     }
     private void calculateAndDisplayTotalEatenCalories() {
@@ -387,8 +389,6 @@ public class HistoryController extends SceneController{
         double totalCalories= userExerciseDao.calculateTotalBurnedCalories(userId,utilDate);
         totalBurnedCaloriesText.setText(String.valueOf(totalCalories));
     }
-
-
 
 
 
