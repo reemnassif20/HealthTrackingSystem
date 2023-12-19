@@ -207,6 +207,46 @@ public class UserFoodDaoImpl implements UserFoodDao {
             }
         }
     }
+    @Override
+    public List<UserFood> findByUserIdAndDate(int userId, Date foodDate) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return null;
+        }
+
+        List<UserFood> userFoods = new LinkedList<>();
+
+        String query = "SELECT * FROM UserFood WHERE user_id=? AND food_date=?;";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setDate(2, new java.sql.Date(foodDate.getTime()));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                UserFood userFood = UserFood.builder()
+                        .userId(resultSet.getInt("user_id"))
+                        .foodId(resultSet.getInt("food_id"))
+                        .mealType(resultSet.getString("meal_type"))
+                        .quantity(resultSet.getInt("quantity"))
+                        .foodDate(resultSet.getDate("food_date"))
+                        .build();
+
+                userFoods.add(userFood);
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return userFoods;
+    }
 
 
 

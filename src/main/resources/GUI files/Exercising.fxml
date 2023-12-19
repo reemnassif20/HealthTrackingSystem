@@ -5,10 +5,10 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -34,30 +34,46 @@
       <Label layoutX="218.0" layoutY="228.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
        <ComboBox fx:id="GYMTrainingComboBox" layoutX="268.0" layoutY="318.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Activity" />
 
-      <Button onAction="#handleGeneralActivitySelection" layoutX="367.0" layoutY="266.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
+      <Button layoutX="367.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleGeneralActivitySelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
       <Label layoutX="38.0" layoutY="323.0" prefHeight="21.0" prefWidth="197.0" text="GYM Training Was " />
       <TextField fx:id="GYMTrainingTime" layoutX="164.0" layoutY="318.0" prefHeight="31.0" prefWidth="48.0" />
       <Label layoutX="216.0" layoutY="323.0" prefHeight="21.0" prefWidth="58.0" text="Min Of" />
        <ComboBox fx:id="GeneralActivityComboBox" layoutX="266.0" layoutY="223.0" prefHeight="31.0" prefWidth="174.0" promptText="Select Training" />
 
-      <Button onAction="#handleGYMTrainingSelection" layoutX="371.0" layoutY="362.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Add" />
-      <ScrollPane layoutX="35.0" layoutY="439.0" prefHeight="162.0" prefWidth="411.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TableView layoutX="-5.0" prefHeight="162.0" prefWidth="411.0">
-                    <columns>
-                      <TableColumn prefWidth="164.0" text="Training " />
-                      <TableColumn prefWidth="82.0" text="Minutes " />
-                        <TableColumn prefWidth="151.0" text="Calories Consumed" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-      <Label layoutX="145.0" layoutY="619.0" prefHeight="21.0" prefWidth="197.0" text="Total Calories Burnt is" />
-      <Label fx:id="totalBurnedCaloriesText" layoutX="300.0" layoutY="619.0" prefHeight="21.0" prefWidth="58.0" text="X" />
-      <Text fx:id="message" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
+      <Button layoutX="371.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleGYMTrainingSelection" prefHeight="31.0" prefWidth="71.0" text="Add" />
+
+       <TableView fx:id="exerciseTable" layoutX="34.0" layoutY="420.0" prefHeight="200.0" prefWidth="412.0">
+           <columns>
+
+               <TableColumn fx:id="exerciseColumn" prefWidth="121.0" text="Exercise">
+                   <cellValueFactory>
+                       <PropertyValueFactory property="exerciseName" />
+                   </cellValueFactory>
+               </TableColumn>
+
+               <TableColumn fx:id="intervalColumn" prefWidth="69.0" text="Interval">
+                   <cellValueFactory>
+                       <PropertyValueFactory property="interval" />
+                   </cellValueFactory>
+               </TableColumn>
+
+
+               <TableColumn fx:id="caloriesConsumedColumn" prefWidth="141.0" text="Calories Consumed">
+                   <cellValueFactory>
+                       <PropertyValueFactory property="caloriesConsumed" />
+                   </cellValueFactory>
+               </TableColumn>
+
+               <TableColumn fx:id="deleteColumn" text="Delete">
+                   <cellFactory>
+                       <PropertyValueFactory property="deleteButton" />
+                   </cellFactory>
+               </TableColumn>
+           </columns>
+       </TableView>
+
+      <Label layoutX="145.0" layoutY="631.0" prefHeight="21.0" prefWidth="197.0" text="Total Calories Burnt is" />
+      <Label fx:id="totalBurnedCaloriesText" layoutX="300.0" layoutY="631.0" prefHeight="21.0" prefWidth="58.0" text="X" />
+      <Text fx:id="message" layoutX="1.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="479.99999499320984" />
    </children>
 </AnchorPane>

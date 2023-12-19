@@ -88,6 +88,7 @@ public class MealsController extends SceneController{
         );
         successMessageTimeline.setCycleCount(1);
         totalCalories = 0;
+        calculateAndDisplayTotalEatenCalories();
 
     }
 
@@ -100,8 +101,7 @@ public class MealsController extends SceneController{
         successMessageTimeline.playFromStart();
     }
     private void handleDatePickerAction(ActionEvent event) {
-        LocalDate selectedDate = datePicker.getValue();
-        System.out.println("Selected date: " + selectedDate);
+        calculateAndDisplayTotalEatenCalories();
     }
 
     private void handleMealSelection(String mealType, ComboBox<String> foodComboBox, TextField foodTextField) {
@@ -145,10 +145,8 @@ public class MealsController extends SceneController{
         UserFoodDaoImpl userFoodDao = new UserFoodDaoImpl();
         userFoodDao.save(userFood);
 
-        double calories = selectedFood.getCaloriesPerHundredUnits();
-        double addedCalories = calories * (quantity / 100.0);
-        totalCalories += addedCalories;
-        totalCaloriesLabel.setText(String.valueOf(totalCalories));
+        calculateAndDisplayTotalEatenCalories();
+
         foodTextField.clear();
         showSuccessMessage();
     }
@@ -253,8 +251,35 @@ public class MealsController extends SceneController{
         FoodDao foodDao = new FoodDaoImpl();
         return foodDao.findByFoodType("Drink");
     }
+    private List<UserFood> getUserFoodsByUserIdAndDate() {
+        UserFoodDaoImpl userFoodDao = new UserFoodDaoImpl();
 
+        int userId = UserRepository.getCurrentUser().getUserId();
 
+        LocalDate foodDate = datePicker.getValue();
+        Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Date utilDate = Date.from(instant);
+
+        return userFoodDao.findByUserIdAndDate(userId, utilDate);
+    }
+
+    private Food getFoodById(int foodId) {
+        FoodDaoImpl foodDao = new FoodDaoImpl();
+        return foodDao.findById(foodId);
+    }
+
+    private void calculateAndDisplayTotalEatenCalories() {
+        List<UserFood> userFoods = getUserFoodsByUserIdAndDate();
+
+        double totalCalories = userFoods.stream()
+                .mapToDouble(userFood -> {
+                    Food food = getFoodById(userFood.getFoodId());
+                    return food != null ? food.getCaloriesPerHundredUnits() * (userFood.getQuantity() / 100.0) : 0.0;
+                })
+                .sum();
+
+        totalCaloriesLabel.setText(String.valueOf(totalCalories));
+    }
 
 
 }

@@ -13,6 +13,7 @@ public interface UserFoodDao {
     List<UserFood> findByUserId(int userId);
 
     void save(UserFood userFood);
+    List<UserFood> findByUserIdAndDate(int userId, Date foodDate);
 
     void deleteByUserIdAndFoodIdAndFoodDate(int userId, int foodId, Date foodDate);
 }

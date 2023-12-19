@@ -13,6 +13,7 @@ public interface UserExerciseDao {
     List<UserExercise> findByUserId(int userId);
 
     void save(UserExercise userExercise);
+    List<UserExercise> findByUserIdAndDate(int userId, Date exerciseDate);
 
     void deleteByUserIdAndExerciseIdAndExerciseDate(int userId, int exerciseId, Date exerciseDate);
 }
