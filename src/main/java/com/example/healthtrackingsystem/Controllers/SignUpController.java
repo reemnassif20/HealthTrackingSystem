@@ -119,6 +119,7 @@ public class SignUpController {
     public void SwitchToSignIn(ActionEvent event) throws IOException {
         root= FXMLLoader.load(getClass().getResource("/GUI files/SignIn.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -145,6 +146,7 @@ public class SignUpController {
 
             root = FXMLLoader.load(getClass().getResource("/GUI files/AccountCreatedSuccessfully.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setResizable(false);
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

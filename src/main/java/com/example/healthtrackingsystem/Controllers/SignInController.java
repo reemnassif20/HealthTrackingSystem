@@ -25,11 +25,6 @@ public class SignInController {
     private PasswordField passwordField;
 
     @FXML
-    private Button signInButton;
-
-    @FXML
-    private Hyperlink signUpLink;
-    @FXML
     private Label signInStatusLabel;
 
 
@@ -53,6 +48,7 @@ public class SignInController {
         try {
             root = FXMLLoader.load(getClass().getResource("/GUI files/SignUp.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setResizable(false);
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -60,19 +56,13 @@ public class SignInController {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void SwitchToSignUp(ActionEvent event) throws IOException {
-        root=FXMLLoader.load(getClass().getResource("/GUI files/SignUP.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
     @FXML
     public void SwitchToHome(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI files/Home.fxml"));
         root = loader.load();
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();

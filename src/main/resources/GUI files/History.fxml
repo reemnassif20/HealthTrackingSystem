@@ -70,7 +70,7 @@
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="deleteColumn" prefWidth="77.0" text="Delete">
+                <TableColumn fx:id="deleteColumn" prefWidth="75.0" text="Delete">
                     <cellFactory>
                         <PropertyValueFactory property="deleteButton" />
                     </cellFactory>

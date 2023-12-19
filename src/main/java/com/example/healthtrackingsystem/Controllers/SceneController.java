@@ -29,6 +29,7 @@ public class SceneController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI files/Home.fxml"));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -37,6 +38,7 @@ public class SceneController {
     public void SwitchToHistory(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("/GUI files/History.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -44,6 +46,7 @@ public class SceneController {
     public void SwitchToSettings(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("/GUI files/Settings.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -51,6 +54,7 @@ public class SceneController {
     public void SwitchToExercising(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("/GUI files/Exercising.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -58,6 +62,7 @@ public class SceneController {
     public void SwitchToMeals(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("/GUI files/Meals.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -65,6 +70,7 @@ public class SceneController {
     public void SwitchToAlarms(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("/GUI files/Reminder.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();

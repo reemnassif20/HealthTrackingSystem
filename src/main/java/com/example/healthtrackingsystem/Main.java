@@ -15,6 +15,7 @@ public class Main extends Application {
         Scene SignInScene = new Scene(fxmlLoader.load());
         stage.setScene(SignInScene);
         stage.show();
+        stage.setResizable(false);
         stage.setTitle("Health Tracking System");
         Image icon =new Image(getClass().getResourceAsStream("/Images/logo.jpeg"));
         stage.getIcons().add(icon);
