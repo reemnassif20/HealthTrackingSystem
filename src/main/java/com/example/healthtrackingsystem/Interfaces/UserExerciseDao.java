@@ -16,4 +16,14 @@ public interface UserExerciseDao {
     List<UserExercise> findByUserIdAndDate(int userId, Date exerciseDate);
 
     void deleteByUserIdAndExerciseIdAndExerciseDate(int userId, int exerciseId, Date exerciseDate);
+
+    double calculateTotalBurnedCalories(int userId, Date exerciseDate);  
+
+
+
+
+
+
+
+
 }

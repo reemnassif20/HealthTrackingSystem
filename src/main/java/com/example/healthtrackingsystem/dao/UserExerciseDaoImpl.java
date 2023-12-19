@@ -1,6 +1,8 @@
 package com.example.healthtrackingsystem.dao;
 
+import com.example.healthtrackingsystem.Interfaces.ExerciseDao;
 import com.example.healthtrackingsystem.Interfaces.UserExerciseDao;
+import com.example.healthtrackingsystem.Models.Exercise;
 import com.example.healthtrackingsystem.Models.UserExercise;
 
 import java.sql.Connection;
@@ -241,7 +243,24 @@ public class UserExerciseDaoImpl implements UserExerciseDao {
         return userExercises;
     }
 
+    public double calculateTotalBurnedCalories(int userId, Date exerciseDate) {
+        List<UserExercise> userExercises = findByUserIdAndDate(userId, exerciseDate);
+        double totalBurnedCalories = 0;
 
+        if (userExercises != null) {
+            for (UserExercise userExercise : userExercises) {
+                ExerciseDao exerciseDao = new ExerciseDaoImpl();
+                Exercise exercise = exerciseDao.findById(userExercise.getExerciseId());
+
+                if (exercise != null) {
+                    double calories = exercise.getActivityTypeCalories();
+                    totalBurnedCalories += calories * userExercise.getDuration();
+                }
+            }
+        }
+
+        return totalBurnedCalories;
+    }
 
 
 }

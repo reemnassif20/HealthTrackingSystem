@@ -262,15 +262,14 @@ public class ExerciseController extends SceneController {
     }
 
     private void calculateAndDisplayTotalBurnedCalories() {
-        List<UserExercise> userExercises = getUserExercisesByUserIdAndDate();
+        UserExerciseDaoImpl userExerciseDao = new UserExerciseDaoImpl();
 
-        double totalCalories = userExercises.stream()
-                .mapToDouble(userExercise -> {
-                    Exercise exercise = getExerciseById(userExercise.getExerciseId());
-                    return exercise != null ? exercise.getActivityTypeCalories() * userExercise.getDuration() : 0.0;
-                })
-                .sum();
+        int userId = UserRepository.getCurrentUser().getUserId();
 
+        LocalDate foodDate = datePicker.getValue();
+        Instant instant = foodDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        Date utilDate = Date.from(instant);
+        double totalCalories= userExerciseDao.calculateTotalBurnedCalories(userId,utilDate);
         totalBurnedCaloriesText.setText(String.valueOf(totalCalories));
     }
 
@@ -281,14 +280,6 @@ public class ExerciseController extends SceneController {
         private final String caloriesConsumed;
         private final Button deleteButton;
         private final UserExercise userExercise;
-
-        public ExerciseTableRow(String exerciseName, String interval, String caloriesConsumed, Button deleteButton, UserExercise userExercise) {
-            this.exerciseName = exerciseName;
-            this.interval = interval;
-            this.caloriesConsumed = caloriesConsumed;
-            this.deleteButton = deleteButton;
-            this.userExercise = userExercise;
-        }
 
         public String getExerciseName() {
             return exerciseName;
@@ -304,6 +295,14 @@ public class ExerciseController extends SceneController {
 
         public Button getDeleteButton() {
             return deleteButton;
+        }
+
+        public ExerciseTableRow(String exerciseName, String interval, String caloriesConsumed, Button deleteButton, UserExercise userExercise) {
+            this.exerciseName = exerciseName;
+            this.interval = interval;
+            this.caloriesConsumed = caloriesConsumed;
+            this.deleteButton = deleteButton;
+            this.userExercise = userExercise;
         }
 
         public UserExercise getUserExercise() {
