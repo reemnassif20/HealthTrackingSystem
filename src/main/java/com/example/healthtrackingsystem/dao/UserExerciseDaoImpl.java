@@ -52,42 +52,6 @@ public class UserExerciseDaoImpl implements UserExerciseDao {
         return userExercises;
     }
 
-    @Override
-    public UserExercise findByUserIdAndExerciseIdAndExerciseDate(int userId, int exerciseId, Date exerciseDate) {
-        Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return null;
-        }
-
-        String query = "SELECT * FROM UserExercises WHERE user_id=? AND exercise_id=? AND exercise_date=?;";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-
-            preparedStatement.setInt(1, userId);
-            preparedStatement.setInt(2, exerciseId);
-            preparedStatement.setDate(3, new java.sql.Date(exerciseDate.getTime()));
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return UserExercise.builder()
-                        .userId(resultSet.getInt("user_id"))
-                        .exerciseId(resultSet.getInt("exercise_id"))
-                        .exerciseDate(resultSet.getDate("exercise_date"))
-                        .duration(resultSet.getInt("duration"))
-                        .build();
-            }
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }
-
-        return null;
-    }
 
     @Override
     public List<UserExercise> findByUserId(int userId) {

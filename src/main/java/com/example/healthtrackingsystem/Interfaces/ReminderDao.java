@@ -11,7 +11,5 @@ public interface ReminderDao {
 
     void save(Reminder reminder);
 
-    void updateReminder(Reminder reminder);
-
     void deleteById(int reminderId);
 }

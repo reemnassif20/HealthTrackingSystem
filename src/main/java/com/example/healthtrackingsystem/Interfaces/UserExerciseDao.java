@@ -8,8 +8,6 @@ import java.util.List;
 public interface UserExerciseDao {
     List<UserExercise> findAll();
 
-    UserExercise findByUserIdAndExerciseIdAndExerciseDate(int userId, int exerciseId, Date exerciseDate);
-
     List<UserExercise> findByUserId(int userId);
 
     void save(UserExercise userExercise);

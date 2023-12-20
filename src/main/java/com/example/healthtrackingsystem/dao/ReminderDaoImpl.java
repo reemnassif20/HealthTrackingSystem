@@ -109,31 +109,6 @@ public class ReminderDaoImpl implements ReminderDao {
         }
     }
 
-    @Override
-    public void updateReminder(Reminder reminder) {
-        Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return;
-        }
-
-        String query = "UPDATE reminder SET user_id=?, reminder_message=?, reminder_period=? WHERE reminder_id=?;";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, reminder.getUserId());
-            preparedStatement.setString(2, reminder.getReminderMessage());
-            preparedStatement.setInt(3, reminder.getReminderPeriod());
-            preparedStatement.setInt(4, reminder.getReminderId());
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }
-    }
 
     @Override
     public void deleteById(int reminderId) {
