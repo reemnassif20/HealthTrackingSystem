@@ -45,6 +45,11 @@
     -fx-font-size: 24px;
     -fx-text-fill:#164863;
 }
+.textHeading {
+    -fx-text-alignment: center;
+    -fx-font-size: 24px;
+    -fx-fill:#164863;
+}
 
 /* Subheadings */
 .subheading {
