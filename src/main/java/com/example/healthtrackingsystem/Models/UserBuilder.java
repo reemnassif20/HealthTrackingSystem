@@ -7,7 +7,6 @@ public class UserBuilder {
     private int userId;
     private String username;
     private String password;
-    private String fullName;
     private String email;
     private String gender;
     private BigDecimal currentWeight;
@@ -31,10 +30,6 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder fullName(String fullName) {
-        this.fullName = fullName;
-        return this;
-    }
 
     public UserBuilder email(String email) {
         this.email = email;
@@ -65,6 +60,6 @@ public class UserBuilder {
         return this;
     }
     public User build() {
-        return new User(userId, username, password, fullName, email, gender, currentWeight, age, height,registrationDate);
+        return new User(userId, username, password, email, gender, currentWeight, age, height,registrationDate);
     }
 }

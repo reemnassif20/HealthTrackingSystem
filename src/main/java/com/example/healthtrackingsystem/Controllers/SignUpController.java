@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +22,7 @@ public class SignUpController {
     private Parent root;
 
     @FXML
-    private TextField fullNameField;
+    private TextField userNameField;
 
     @FXML
     private TextField emailField;
@@ -71,7 +70,7 @@ public class SignUpController {
 
     @FXML
     private void handleSignUp(ActionEvent event) {
-        String fullName = fullNameField.getText();
+        String userName = userNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
@@ -84,9 +83,8 @@ public class SignUpController {
 
             if (password.equals(confirmPassword)) {
                 User newUser = User.builder()
-                        .username(email)
+                        .username(userName)
                         .password(password)
-                        .fullName(fullName)
                         .email(email)
                         .gender(gender)
                         .age(age)

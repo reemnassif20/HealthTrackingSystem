@@ -8,7 +8,7 @@ public class User {
     private int userId;
     private String username;
     private String password;
-    private String fullName;
+
     private String email;
     private String gender;
     private BigDecimal currentWeight;
@@ -19,12 +19,11 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String username, String password, String fullName, String email,
+    public User(int userId, String username, String password, String email,
                 String gender, BigDecimal currentWeight, int age, int height,Date registrationDate) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.fullName = fullName;
         this.email = email;
         this.gender = gender;
         this.currentWeight = currentWeight;
@@ -59,13 +58,6 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public String getEmail() {
         return email;
@@ -170,7 +162,6 @@ public class User {
 
     public int calculateCaloriesPerDay() {
         // Example: Calculate calories needed for weight management
-        // You may need a more sophisticated formula based on individual factors
 
         // Base calories needed for weight maintenance
         int baseCalories = 2000;
@@ -181,18 +172,6 @@ public class User {
 
         // Adjust calories based on other factors (gender, activity level, etc.)
         double genderMultiplier = getGenderMultiplier();
-        //todo change this later with proper implementation in the database with:
-//        private double getActivityLevelMultiplier() {
-//            switch (activityLevel) {
-//                case "sedentary":
-//                    return 1.2;
-//                case "moderate":
-//                    return 1.5;
-//                case "active":
-//                    return 1.8;
-//                default:
-//                    return 1.0; // Assume no adjustment for unknown activity level
-//            }
         double activityLevelMultiplier = 1;
 
         // Combine all multipliers to get the final adjusted calories
@@ -232,7 +211,6 @@ public class User {
                 "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
                 ", currentWeight=" + currentWeight +
