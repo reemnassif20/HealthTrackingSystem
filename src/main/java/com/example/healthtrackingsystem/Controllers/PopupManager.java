@@ -9,17 +9,23 @@ import javafx.util.Duration;
 
 public class PopupManager {
 
-    private static final Duration POPUP_INTERVAL = Duration.minutes(.25);
-
+    private final Duration popupInterval;
+    private final String popupMessage;
     private final Timeline popupTimeline;
 
-    public PopupManager() {
-        // Create a Timeline that triggers every 30 minutes
+    public PopupManager(Duration popupInterval, String popupMessage) {
+        this.popupInterval = popupInterval;
+        this.popupMessage = popupMessage;
+
+        // Create a Timeline that triggers at the specified interval
         popupTimeline = new Timeline(
-                new KeyFrame(POPUP_INTERVAL, event -> showPopup(null))
+                new KeyFrame(popupInterval, event -> showPopup(null))
         );
         popupTimeline.setCycleCount(Timeline.INDEFINITE);
         popupTimeline.play();
+
+        // Show the initial popup upon object creation
+        showPopup(null);
     }
 
     public void showPopup(Stage ownerStage) {
@@ -27,7 +33,7 @@ public class PopupManager {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alert");
             alert.setHeaderText(null);
-            alert.setContentText("Time to take a break!");
+            alert.setContentText(popupMessage);
 
             // Show the alert with the specified owner stage
             if (ownerStage != null) {
@@ -36,5 +42,4 @@ public class PopupManager {
             alert.showAndWait();
         });
     }
-
 }

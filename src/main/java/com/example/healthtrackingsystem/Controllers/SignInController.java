@@ -1,6 +1,7 @@
 package com.example.healthtrackingsystem.Controllers;
-
+import com.example.healthtrackingsystem.Models.Reminder;
 import com.example.healthtrackingsystem.Models.User;
+import com.example.healthtrackingsystem.dao.ReminderDaoImpl;
 import com.example.healthtrackingsystem.dao.UserDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class SignInController {
     private Stage stage;
@@ -38,6 +44,26 @@ public class SignInController {
             System.out.println("Sign in successful!");
             UserRepository.setCurrentUser(user);
             SwitchToHome(event);
+
+            ReminderDaoImpl reminderDao = new ReminderDaoImpl();
+            List<Reminder> userReminders = reminderDao.findAllByUserId(user.getUserId());
+
+            ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+
+            for (Reminder reminder : userReminders) {
+                String reminderMessage = reminder.getReminderMessage();
+                int reminderPeriod = reminder.getReminderPeriod();
+
+                Duration duration = Duration.minutes(reminderPeriod);
+
+                // Schedule the creation of PopupManager with a delay
+                executorService.schedule(() -> {
+                    PopupManager popupManager = new PopupManager(duration, reminderMessage);
+                    System.out.println(popupManager);
+                }, reminderPeriod, TimeUnit.MINUTES);
+            }
+
+
         } else {
             signInStatusLabel.setText("Incorrect email or password. Please try again.");
         }

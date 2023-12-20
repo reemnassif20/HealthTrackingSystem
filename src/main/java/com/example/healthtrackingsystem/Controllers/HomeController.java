@@ -64,7 +64,7 @@ public class HomeController extends SceneController{
         int caloriesPerDay = signedInUser.calculateCaloriesPerDay();
 
         // Update UI elements
-        CurrentBMI.setText(String.format("%.2f", bmi));
+        CurrentBMI.setText(String.valueOf(bmi));
         CurrentWeight.setText(String.valueOf(signedInUser.getCurrentWeight()));
         ChangeRecommendation.setText(signedInUser.determineWeightChangeRecommendation());
         WeightChange.setText(weightToLoseOrGain.toString());

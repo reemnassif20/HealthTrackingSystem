@@ -1,5 +1,4 @@
 package com.example.healthtrackingsystem;
-import com.example.healthtrackingsystem.Controllers.PopupManager;
 import com.example.healthtrackingsystem.dao.DBConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,14 +20,6 @@ public class Main extends Application {
         stage.setTitle("Health Tracking System");
         Image icon =new Image(getClass().getResourceAsStream("/Images/logo.jpeg"));
         stage.getIcons().add(icon);
-        // Create an instance of PopupManager
-        PopupManager popupManager = new PopupManager();
-
-        // Show the pop-up with the current stage as the owner
-        popupManager.showPopup(stage);
-
-
-
     }
 
     public static void main(String[] args) {
@@ -41,7 +32,6 @@ public class Main extends Application {
             System.out.println("Connection Success! ");
         }
         launch();
-
 
     }
 
