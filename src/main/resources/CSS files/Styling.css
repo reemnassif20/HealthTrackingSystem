@@ -15,8 +15,26 @@
     -fx-base: #E8AA42; /* Accent Color */
 }
 
+.pageTitle{
+    -fx-text-alignment: center;
+    -fx-font-size: 18px;
+    -fx-fill: #164863;
 
+}
+.pageText{
+    -fx-text-alignment: center;
+    -fx-font-size: 14px;
+    -fx-fill:#427D9D;
+}
 
+.texts{
+    -fx-font-size: 15px;
+    -fx-fill: #427D9D;
+}
+.numbers{
+    -fx-font-size: 15px;
+    -fx-fill: #E8AA42;
+}
 /* Headings */
 .heading {
     -fx-text-alignment: center;
@@ -28,7 +46,7 @@
 .subheading {
     -fx-font-size: 16px;
     -fx-text-alignment: center;
-    -fx-text-fill: #427D9D;
+    -fx-text-fill: #164863;
 }
 
 .note{
@@ -46,7 +64,6 @@
     -fx-text-fill: #E8AA42;
 }
 
-/* Labels with only bottom border */
 .labels {
     -fx-font-size: 15px;
     -fx-text-fill: #427D9D;
@@ -82,7 +99,6 @@
 
 /* Buttons */
 .button {
-    -fx-font-size: 16px;
     -fx-background-color: #164863;
     -fx-text-fill: white;
 }
