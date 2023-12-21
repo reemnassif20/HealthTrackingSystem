@@ -57,14 +57,14 @@ Welcome to the Health Tracking System! This user manual provides comprehensive g
 ```bash
 git clone https://github.com/reemnassif20/HealthTrackingSystem 
 ```
-(#setting-up-dependencies) ## Setting Up Dependencies
+## Setting Up Dependencies
 - Ensure you have Java, JavaFX, and XAMPP (for running the local database) installed.
 - Set up the project in your preferred IDE (Eclipse, IntelliJ, etc.).
-(#running-the-application) ## Running the Application
+## Running the Application
 - Open XAMPP and start running Apache and MySQL.
 - Open the localhost and import the database queries found in HealthTrackingSystem\database\db_queries2.sql.
 - Locate the main application file and run it.
-The application GUI should appear, allowing you to explore its features.
+- The application GUI should appear, allowing you to explore its features.
 # 2. User Registration and Login
 ## Creating an Account
 - Launch the application and navigate to the registration page.
