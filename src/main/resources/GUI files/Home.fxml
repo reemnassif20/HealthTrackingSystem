@@ -44,7 +44,7 @@
       <Text layoutX="148.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="texts" text="You eated  " wrappingWidth="86.99999552965164" />
       <Text layoutX="268.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="texts" text="Cal Today" wrappingWidth="142.01513850688934" />
       <Separator layoutX="141.0" layoutY="505.0" prefWidth="200.0" />
-      <Text fx:id="totalEnteredCalories" layoutX="193.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numbers" wrappingWidth="53.01513835787773" />
+      <Text fx:id="totalEnteredCalories" layoutX="198.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numbers" wrappingWidth="53.01513835787773" />
       <Text layoutX="246.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="texts" text="out of" wrappingWidth="46.01513835787773" />
       <Text fx:id="totalEatenCaloriesText" layoutX="217.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numbers" wrappingWidth="60.01513637602329" />
       <Text layoutX="151.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="texts" text="You Burnt   " wrappingWidth="86.99999552965164" />
