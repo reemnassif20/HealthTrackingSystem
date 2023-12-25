@@ -28,7 +28,7 @@
       <DatePicker fx:id="datePicker" layoutX="231.0" layoutY="270.0" prefHeight="31.0" prefWidth="226.0" />
       <Label layoutX="44.0" layoutY="272.0" prefHeight="21.0" prefWidth="143.0" styleClass="labels" text="Pick a date" />
       <Label layoutX="45.0" layoutY="309.0" prefHeight="21.0" prefWidth="143.0" styleClass="labels" text="Eaten Food" />
-      <Label layoutX="44.0" layoutY="489.0" prefHeight="21.0" prefWidth="143.0" styleClass="labels" text="Played Exercies" />
+      <Label layoutX="44.0" layoutY="489.0" prefHeight="21.0" prefWidth="143.0" styleClass="labels" text="Played Exercises" />
       <Label layoutX="295.0" layoutY="310.0" prefHeight="21.0" prefWidth="143.0" styleClass="labels" text="Total calories" />
       <Text fx:id="totalEatenCaloriesText" layoutX="423.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numbers" />
       <Label layoutX="294.0" layoutY="489.0" prefHeight="21.0" prefWidth="143.0" styleClass="labels" text="Total calories" />
